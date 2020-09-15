@@ -9,15 +9,18 @@
     active-text-color="red"
     router
   >
-    <img src="../../../assets/images/logo_black.png" alt="search" class="logo"/>
+    <img
+      src="../../../assets/images/logo_black.png"
+      alt="search"
+      class="logo"
+    />
 
-    <el-menu-item index="/found">发现音乐</el-menu-item>
+    <el-menu-item index="/found" class="active">发现音乐</el-menu-item>
     <el-menu-item index="/rank">排行榜</el-menu-item>
     <el-menu-item index="/album">歌单</el-menu-item>
     <el-menu-item index="/singer">歌手</el-menu-item>
+    <span>登录</span >
     <i class="el-icon-search"></i>
-    <div class="line"></div>
-    <el-button ></el-button>
   </el-menu>
 </template>
 <script>
@@ -26,6 +29,7 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
+      x:200,
     };
   },
   methods: {
@@ -35,9 +39,26 @@ export default {
   },
 };
 </script>
-<style scoped>
-  .logo{
-    float: left;
-   margin-top: 15px;
+<style lang="less" scoped>
+.el-menu-demo{
+  width: 100%;
+  margin-left:0px ;
+  position: fixed;
+  top: 0;
+}
+.logo {
+  float: left;
+  margin: 15px 20px 0 10px ;
+  outline: none;
+}
+i,span{
+  float: right;
+  display: inline-block;
+  line-height:60px;
+  margin-right:70px;
+  cursor: pointer;
+  &:hover{
+    color: red;
+  }
 }
 </style>

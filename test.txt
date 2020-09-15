@@ -1,0 +1,12 @@
+薛：
+App主应用由header组件 主视图  footer组件组成
+主视图（router-view）由路由控制，分别指向五个子视图：found，rank，singer，ablum + login
+四个子视图分别由大家负责的组件拼接而成
+found：swiper+三个推荐
+rank singer：使用左右布局组件（leftRight）
+ablum：关键词组件（singerKey）+推荐歌手
+
+login ：判断路由元meta中的islogin 判断当前是否在“登录”界面 若是 则隐藏app中的header和footer（v-if） 达到全屏的效果
+
+
+
