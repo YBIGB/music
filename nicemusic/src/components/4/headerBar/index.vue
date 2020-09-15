@@ -11,10 +11,10 @@
   >
     <img src="../../../assets/images/logo_black.png" alt="search" class="logo"/>
 
-    <el-menu-item index="home">发现音乐</el-menu-item>
-    <el-menu-item index="home/rank">排行榜</el-menu-item>
-    <el-menu-item index="home/album">歌单</el-menu-item>
-    <el-menu-item index="home/singer">歌手</el-menu-item>
+    <el-menu-item index="/found">发现音乐</el-menu-item>
+    <el-menu-item index="/rank">排行榜</el-menu-item>
+    <el-menu-item index="/album">歌单</el-menu-item>
+    <el-menu-item index="/singer">歌手</el-menu-item>
     <i class="el-icon-search"></i>
     <div class="line"></div>
     <el-button ></el-button>

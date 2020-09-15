@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from '../views/home'
+import FoundMusic from '../views/foundMusic'
 import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
@@ -14,9 +14,9 @@ Vue.use(VueRouter);
 //路由配置
 var routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
-        component: Home,
+        component: FoundMusic,
         children:[
             {
                 path:'/rank',
