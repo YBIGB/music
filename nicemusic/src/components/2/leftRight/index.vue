@@ -38,24 +38,11 @@
         </div>
       
         </li>
-        <el-table
-    :data="tableData"
-    stripe
-    style="width: 100%">
-    <el-table-column
-      prop="date"
-      label="日期"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址">
-    </el-table-column>
+        <el-table :data="tableData" stripe style="width: 100%">
+    <el-table-column width="40" prop='number'></el-table-column>
+    <el-table-column prop="date" label="标题" ></el-table-column>
+    <el-table-column prop="name" label="时长" width="180"></el-table-column>
+    <el-table-column prop="address" label="歌手" width="180"></el-table-column>
   </el-table>
       </ul>
       </div> </el-main>
@@ -71,21 +58,25 @@ export default {
    data() {
       return {
         tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          number:1,
+          date: '他只是经过',
+          name: '03：35',
+          address: 'Felix Bennett'
         }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
+          number:2,
+          date: '麻雀',
+          name: '04：12',
+          address: '李荣浩'
         }, {
-          date: '2016-05-01',
+          number:3,
+          date: '所念皆星河',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
+          address: '上海市普陀区'
         }, {
+          number:4,
           date: '2016-05-03',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
+          address: '上海市普陀'
         }]
       }
     }
@@ -147,9 +138,7 @@ h4{
   border: olivedrab 1px solid;
   margin-right: 10px;
 }
-.el-container {
-  margin-top: 40px;
-}
+
 
 .colorBlack{
   color: black;
@@ -171,6 +160,7 @@ h2{
 .colorGrayBig{
   font-size: 15px;
   color: rgb(90, 86, 86);
+  margin-bottom: 20px;
 }
 
 .rightLiBig{

@@ -25,8 +25,7 @@
   width: 100vw;
   margin-left:-8px ;
   background-color: #161e27;
-  position: fixed;
-  bottom: 0;
+ 
   color: white;
   text-align: center;
 }
