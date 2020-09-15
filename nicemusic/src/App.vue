@@ -1,35 +1,48 @@
 <template>
-  <div>
-    <headerBar style="margin-bottom:60px" v-if="isLogin"></headerBar>
+  <div style="position:relative">
+    <headerBar v-if="isLogin" @showSearch='isSearch=!isSearch'></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
-    <!-- <goTop></goTop> -->
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
+    <goTop></goTop>
+    <searchBox id="searchBox" v-if="isSearch"></searchBox>
   </div>
 </template>
 
 <script>
 import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
-// import goTop from './components/2/goTop'
+import goTop from "./components/2/goTop";
+import searchBox from "./components/4/search";
 export default {
   name: "home",
   components: {
     headerBar,
     footerBar,
+    goTop,
+    searchBox,
   },
   data() {
     return {
-      isLogin:true
-    }
+      isLogin: true,
+      isSearch:false
+    };
   },
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+#searchBox{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin: 0 auto;
+}
+
 
 .fly{
   position: absolute;
