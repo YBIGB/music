@@ -1,20 +1,29 @@
 <template>
-  <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
-    <li v-for="i in count" class="infinite-list-item" :key="i">{{ i }}</li>
-  </ul>
+    <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+       <div v-for="item in data" :key="item.index">{{item.name}}</div>
+   </div>
 </template>
 
 <script>
   export default {
     data () {
       return {
-        count: 0
+        count: 0,
+        data: [],
+        busy: false
       }
     },
     methods: {
-      load () {
-        this.count += 2
-      }
+      loadMore: function() {
+      this.busy = true
+      setTimeout(() => {
+        for (var i = 0, j = 10; i < j; i++) {
+          this.data.push({name: this.count++ })
+        }
+        console.log(this.data)
+        this.busy = false
+      }, 1000)
+    }
     }
   }
 </script>
