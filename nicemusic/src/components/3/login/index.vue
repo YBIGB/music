@@ -54,13 +54,6 @@ export default {
 </script>
 
 <style lang='less' scoped>
-* {
-  padding: 0;
-  margin: 0;
-}
-.gap20 {
-  height: 20px;
-}
 .el-row {
   margin: 28px;
   &:last-child {
@@ -75,7 +68,7 @@ export default {
   height: 80px;
 }
 .loginBg {
-  height: 1000px;
+  height: 100vh;
   background: #5dd5c8;
 }
 .loginForm {
