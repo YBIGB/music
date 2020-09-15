@@ -2,6 +2,7 @@
   <div class="loginBg">
     <kinesis-container>
       <kinesis-element :strength="10">
+        <!-- <div class="gap20"></div> -->
         <form action method="post" class="loginForm">
           <el-row :gutter="20">
             <el-col :span="16" :offset="4">
@@ -15,8 +16,12 @@
           </el-row>
           <el-row :gutter="20">
             <el-col :span="16" :offset="4">
-              <i class="el-icon-lock"></i>
-              <el-input placeholder="请输入密码" v-model="inputP" show-password></el-input>
+              <el-input
+                placeholder="请输入密码"
+                prefix-icon="el-icon-lock"
+                v-model="inputP"
+                show-password
+              ></el-input>
             </el-col>
           </el-row>
           <el-row :gutter="20">
@@ -53,11 +58,17 @@ export default {
   padding: 0;
   margin: 0;
 }
+.gap20 {
+  height: 20px;
+}
 .el-row {
-  margin-bottom: 20px;
+  margin: 28px;
   &:last-child {
     margin-bottom: 0;
   }
+}
+.el-button {
+  width: 100%;
 }
 .nicelogo {
   width: 80px;
