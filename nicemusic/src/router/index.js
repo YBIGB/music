@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '../views/home'
-import Login from '../views/login'
+//import Login from '../views/login'
 
 //Vue中安装路由插件
 Vue.use(VueRouter);
@@ -14,15 +14,15 @@ var routes = [
         component: Home,
 
     },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        meta: {
-          title: '登录',
-          isLogin: true
-     }
-    }
+    // {
+    //     path: '/login',
+    //     name: 'login',
+    //     component: Login,
+    //     meta: {
+    //       title: '登录',
+    //       isLogin: true
+    //  }
+    //}
 
 ]
 
