@@ -1,8 +1,8 @@
 <template>
   <div>
-    <headerBar></headerBar>
+    <headerBar style="margin-bottom:65px"></headerBar>
     <router-view></router-view>
-    <footerBar></footerBar>
+    <footerBar style="position:absolute;bottom:0"></footerBar>
     <!-- <goTop></goTop> -->
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>

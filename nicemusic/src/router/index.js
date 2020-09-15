@@ -5,9 +5,8 @@ import FoundMusic from '../views/foundMusic'
 import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
+import Login from '../views/login';
 
-
-//import Login from '../views/login'
 
 //Vue中安装路由插件
 Vue.use(VueRouter);
@@ -17,30 +16,32 @@ var routes = [
         path: '/',
         name: 'home',
         component: FoundMusic,
-        children:[
-            {
-                path:'/rank',
-                component:Rank,
-            },
-            {
-                path:'/album',
-                component:Album,
-            },
-            {
-                path:'/singer',
-                component:Singer,
-            },
-        ]
     },
-    // {
-    //     path: '/login',
-    //     name: 'login',
-    //     component: Login,
-    //     meta: {
-    //       title: '登录',
-    //       isLogin: true
-    //  }
-    //}
+    {
+        path: '/rank',
+        component: Rank,
+    },
+    {
+        path: '/album',
+        component: Album,
+    },
+    {
+        path: '/singer',
+        component: Singer,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        //     meta: {
+        //       title: '登录',
+        //       isLogin: true
+        //  }
+    }
+
+
+
+
 
 ]
 
