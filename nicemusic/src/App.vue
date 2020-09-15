@@ -1,8 +1,8 @@
 <template>
   <div>
-    <headerBar style="margin-bottom:65px"></headerBar>
+    <headerBar style="margin-bottom:60px" v-if="isLogin"></headerBar>
     <router-view></router-view>
-    <footerBar style="position:absolute;bottom:0"></footerBar>
+    <footerBar v-if="isLogin"></footerBar>
     <!-- <goTop></goTop> -->
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
@@ -21,10 +21,20 @@ export default {
     headerBar,
     footerBar,
   },
+  data() {
+    return {
+      isLogin:true
+    }
+  },
 };
 </script>
 
 <style scoped>
+
+.fly{
+  position: absolute;
+  z-index: 0;
+}
 .bg-fly-circle1 {
   left: 40px;
   top: 100px;

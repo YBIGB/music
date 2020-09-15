@@ -20,7 +20,7 @@
     <el-menu-item index="/rank">排行榜</el-menu-item>
     <el-menu-item index="/album">歌单</el-menu-item>
     <el-menu-item index="/singer">歌手</el-menu-item>
-    <router-link to="/login">登录</router-link>
+    <router-link to="/login"  >登录</router-link>
     <i class="el-icon-search"></i>
   </el-menu>
   
@@ -32,7 +32,6 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      x:200,
     };
   },
   methods: {
@@ -48,6 +47,7 @@ export default {
   margin-left:0px ;
   position: fixed;
   top: 0;
+  z-index: 999;
 }
 .logo {
   float: left;
