@@ -2,6 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '../views/home'
+import Rank from '../views/rank'
+import Album from '../views/album'
+import Singer from '../views/singer'
+
+
 //import Login from '../views/login'
 
 //Vue中安装路由插件
@@ -12,7 +17,20 @@ var routes = [
         path: '/home',
         name: 'home',
         component: Home,
-
+        children:[
+            {
+                path:'/rank',
+                component:Rank,
+            },
+            {
+                path:'/album',
+                component:Album,
+            },
+            {
+                path:'/singer',
+                component:Singer,
+            },
+        ]
     },
     // {
     //     path: '/login',

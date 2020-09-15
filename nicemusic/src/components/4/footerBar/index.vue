@@ -10,9 +10,7 @@
 </template>
 
 <style lang="less" scoped>
-body {
-  overflow: hidden;
-}
+
 #app {
   height: 300px;
   width: 100vw;
