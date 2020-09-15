@@ -13,10 +13,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(VueAxios, Axios);
 
 Vue.use(ElementUI);
-
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 Vue.config.productionTip = false
-
 new Vue({
     render: h => h(App),
     router,

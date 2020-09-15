@@ -12,14 +12,18 @@
     "vanilla-tilt": "^1.7.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
+<<<<<<< HEAD
     "vue-kinesis": "^1.1.5",
+=======
+    "vue-infinite-scroll": "^2.0.2",
+>>>>>>> 2333bc5e1a178250c6143472c13d3e6523594cf9
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "element-ui": "^2.0.0-rc.1",
+    "element-ui": "^2.13.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
