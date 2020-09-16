@@ -21,18 +21,17 @@
 <style lang="less" scoped>
 
 #app {
-  height: 150px;
+  height: 20vh;
   width: 100vw;
-  margin-left:-8px ;
   background-color: #161e27;
  
   color: white;
   text-align: center;
 }
 img{
-  margin:10px;
-  height:100px;
-  border-radius: 100px;
+  margin:15px;
+  width:6vw;
+  border-radius: 50%;
 }
 span{
 font-size: 14px;

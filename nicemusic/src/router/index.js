@@ -6,24 +6,27 @@ import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
 import Login from '../views/login';
+import Personal from '../views/personal'
 
 // 测试right left插件
-import leftRight from '../components/2/leftRight'
+
 
 //Vue中安装路由插件
 Vue.use(VueRouter);
 //路由配置
 var routes = [{
-        path: '/home',
-        name: 'home',
+        path: '/found',
+        name: 'found',
         component: FoundMusic,
     },
     {
         path: '/rank',
+        name: 'rank',
         component: Rank,
     },
     {
         path: '/album',
+        name: 'album',
         component: Album,
     },
     {
@@ -38,12 +41,12 @@ var routes = [{
         //       title: '登录',
         //       isLogin: true
         //  }
-    },
-    {
-        path: '/leftRight',
-        name: 'leftRight',
-        component: leftRight,
+    }, {
+        path: '/personal',
+        name: 'personal',
+        component: Personal,
     }
+
 
 ]
 
