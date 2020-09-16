@@ -7,7 +7,7 @@
 <script>
 import singer from '../../components/3/singer/index.vue'
 export default {
-    name:'Singer',
+    name:'singer',
     components:{
         singer,
     }
