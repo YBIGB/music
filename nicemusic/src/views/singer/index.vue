@@ -1,6 +1,5 @@
 <template>
     <div>
-<<<<<<< HEAD
         <singer></singer>
     </div>
 </template>
@@ -14,8 +13,3 @@ export default {
     }
 }
 </script>
-=======
-        
-    </div>
-</template>
->>>>>>> ee78c0bd75cda4b3e38bce679fa76f74f8186523
