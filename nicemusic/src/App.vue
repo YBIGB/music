@@ -20,6 +20,7 @@ import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
 import PlayerBar from './components/4/playerBar'
+
 export default {
   name: "home",
   components: {
