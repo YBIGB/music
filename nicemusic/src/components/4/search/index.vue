@@ -1,5 +1,9 @@
 <template>
-    <div class="frame">
+<div class="pic">
+    <div class="filter">
+    </div>
+    <transition appear>
+        <div class="frame">
         <div class="bgc">
             <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="showHistory">
         </div>
@@ -21,9 +25,16 @@
             <div class="history">
                 <img src="./img/footprint.png" alt="">
                 <p>历史搜索</p>
+                
             </div>
         </div>
+        <div class="closeButton">
+            <span>❌</span>
+        </div>
     </div>
+    </transition>
+</div>
+    
 </template>
 
 <style scoped>
@@ -32,20 +43,47 @@
         margin: 0
     }
 
+    .pic{
+        
+        width: 100%;
+        height: 624px;
+    }
+
+    .filter{
+        position: absolute;
+        width: 1365px;
+        height: 624px;
+        background: url("./img/bg.png") no-repeat;
+        background-size: cover;
+        filter: blur(9px);
+    }
+
     .frame{
         width: 825px;
-        height: 370px;
-        margin: 200px auto;
-         background-color: white;
+        height: 420px;
+        margin: 0px auto;
+        padding-top: 100px;
+    }
+
+    .v-enter,.v-leave-to{
+        opacity: 0;
+    }
+
+    .v-enter-active,.v-leave-active{
+        transition: linear 0.5s;
+    }
+    
+    .v-enter-to,.v-leave{
+        opacity: 1;
     }
 
     .bgc{
+        position: relative;
         width: 825px;
         height: 220px;
         text-align: center;
         background: url("./img/singer.jpg") no-repeat center;
         border-radius: 10px 10px 0 0;
-       
     }
 
     input{
@@ -70,7 +108,7 @@
         padding-left: 50px;
         border-radius: 0 0 10px 10px;
         position: relative;
-        background-color: white;
+        background-color:white;
     }
 
     .blank p{
@@ -112,16 +150,24 @@
         position: absolute;
         left: 30px;
         top: 150px;
-         
     }
 
     .history p{
         margin-top: 50px;
     }
 
-    .change{
-        color: red;
+    .closeButton{
+        cursor: pointer;
+        position: relative;
+        width: 25px;
+        height: 30px;
+        background-color: #fff;
+        line-height: 30px;
+        border-radius: 50%;
+        margin: 30px auto;
+        padding-left: 5px;
     }
+    
 </style>
 
 <script>
@@ -136,7 +182,7 @@ export default {
             //显示历史搜索记录
             document.querySelector(".history").style.display="block";
             var a = document.querySelector(".blank");
-            a.style.height = 270 + "px";
+            a.style.height = 210 + "px";
             //添加新span节点
             var b = document.querySelector(".history");
             var newNode = document.createElement("span");
@@ -147,6 +193,5 @@ export default {
             document.querySelector(".history").lastElementChild.innerHTML= i;
         }
     },
-
 }
 </script>
