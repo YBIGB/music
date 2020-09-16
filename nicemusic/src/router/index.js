@@ -6,7 +6,7 @@ import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
 import Login from '../views/login';
-
+import Personal from '../views/personal'
 
 //Vue中安装路由插件
 Vue.use(VueRouter);
@@ -36,6 +36,10 @@ var routes = [{
         //       title: '登录',
         //       isLogin: true
         //  }
+    }, {
+        path: '/personal',
+        name: 'personal',
+        component: Personal,
     }
 
 
