@@ -1,16 +1,17 @@
 <template>
-  <div>
-      <left-right></left-right>
-  </div>
+  <left-right></left-right>
 </template>
 
 <script>
 import leftRight from '../../components/2/leftRight'
 export default {
-    name:'albun',
+    name:'leftRight',
     components:{
         leftRight
     },
 }
 </script>
 
+<style>
+
+</style>
