@@ -15,50 +15,64 @@
     data() {
       return {
         singerData: [{
-            src:'../../../assets/images/liao.jpg',
+            src:require('../../../assets/images/liao.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/yang.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/fu.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/liao.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/zhou.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/yu.jpg'),
+            name:'双笙',
+            number:234
+          },{
+            src:require('../../../assets/images/liao.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/yu.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/liao.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/liao.jpg'),
+            name:'华晨宇',
+            number:234
+          },{
+            src:require('../../../assets/images/liao.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/liao.jpg'),
+            name:'华晨宇',
+            number:234
+          },{
+            src:require('../../../assets/images/yu.jpg'),
             name:'毛不易',
             number:234
           },{
+            src:require('../../../assets/images/yu.jpg'),
             name:'毛不易',
             number:234
           },{
-            name:'毛不易',
-            number:234
-          },{
-            name:'毛不易',
-            number:234
-          },{
-            name:'毛不易',
-            number:234
-          },{
-            name:'毛不易',
+            src:require('../../../assets/images/liao.jpg'),
+            name:'河图',
             number:234
           }
         ]
