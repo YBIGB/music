@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h1>recommendSongs</h1>
+  <div class="banner">
+    <h1>banner</h1>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'recommendSongs',
+    name: 'Banner',
     data() {
       return {
         banners: [],
