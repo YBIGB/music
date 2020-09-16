@@ -41,10 +41,6 @@ var routes = [{
         //       title: '登录',
         //       isLogin: true
         //  }
-    }, {
-        path: '/personal',
-        name: 'personal',
-        component: Personal,
     }
 
 
