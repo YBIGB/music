@@ -36,6 +36,7 @@
         width: 825px;
         height: 370px;
         margin: 200px auto;
+         background-color: white;
     }
 
     .bgc{
@@ -44,6 +45,7 @@
         text-align: center;
         background: url("./img/singer.jpg") no-repeat center;
         border-radius: 10px 10px 0 0;
+       
     }
 
     input{
@@ -68,6 +70,7 @@
         padding-left: 50px;
         border-radius: 0 0 10px 10px;
         position: relative;
+        background-color: white;
     }
 
     .blank p{
@@ -109,6 +112,7 @@
         position: absolute;
         left: 30px;
         top: 150px;
+         
     }
 
     .history p{

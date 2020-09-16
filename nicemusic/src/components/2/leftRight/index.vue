@@ -92,8 +92,7 @@ export default {
 }
 .main {
   margin: 0 auto;
-  width: 80%;
-  border: 1px solid #d3d3d3;
+  width: 80vw;
 } 
 .el-aside {
   background-color: #D3DCE6;

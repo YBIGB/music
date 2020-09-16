@@ -8,22 +8,24 @@ import Singer from '../views/singer'
 import Login from '../views/login';
 
 // 测试right left插件
-import leftRight from '../components/2/leftRight'
+
 
 //Vue中安装路由插件
 Vue.use(VueRouter);
 //路由配置
 var routes = [{
-        path: '/home',
-        name: 'home',
+        path: '/found',
+        name: 'found',
         component: FoundMusic,
     },
     {
         path: '/rank',
+        name:'rank',
         component: Rank,
     },
     {
         path: '/album',
+        name:'album',
         component: Album,
     },
     {
@@ -39,11 +41,7 @@ var routes = [{
         //       isLogin: true
         //  }
     },
-    {
-        path: '/leftRight',
-        name: 'leftRight',
-        component: leftRight,
-    }
+  
 
 ]
 
