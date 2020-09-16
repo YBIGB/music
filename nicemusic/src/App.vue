@@ -1,39 +1,64 @@
 <template>
-  <div>
-    <headerBar style="margin-bottom:60px" v-if="isLogin"></headerBar>
+  <div style="position:relative;">
+    <headerBar v-if="isLogin"  @showSearch='isSearch=!isSearch'></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
-    <!-- <goTop></goTop> -->
+    <goTop     v-if="isLogin"></goTop>
+    <searchBox id="searchBox" v-if="isSearch"></searchBox>
+    <player-bar v-if="isLogin"></player-bar>
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
+    <button @click="sss">123</button>
   </div>
 </template>
 
 <script>
 import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
-// import goTop from './components/2/goTop'
+import goTop from "./components/2/goTop";
+import searchBox from "./components/4/search";
+import PlayerBar from './components/4/playerBar'
 export default {
   name: "home",
   components: {
     headerBar,
     footerBar,
+    goTop,
+    searchBox,
+    PlayerBar
   },
   data() {
     return {
-      isLogin:true
-    }
+      isLogin: true,
+      isSearch:false,
+      posts:[]
+    };
   },
+ methods: {
+   sss() {
+    this.axios.get("http://localhost:3000/song/detail?ids=347230,347231").then((res) => {
+      console.log(res)
+    });
+  },
+ },
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+#searchBox{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin: 0 auto;
+}
 
-.fly{
-  position: absolute;
-  z-index: 0;
+.fly {
+  pointer-events: none;
+  position: fixed;
+  z-index: 100;
 }
 .bg-fly-circle1 {
   left: 40px;

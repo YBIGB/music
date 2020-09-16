@@ -8,20 +8,27 @@ import Singer from '../views/singer'
 import Login from '../views/login';
 import songs from '../components/3/singer/songs'
 import work from '../components/3/singer/work'
+import Personal from '../views/personal'
+
+// 测试right left插件
+
+
 //Vue中安装路由插件
 Vue.use(VueRouter);
 //路由配置
 var routes = [{
-        path: '/home',
-        name: 'home',
+        path: '/found',
+        name: 'found',
         component: FoundMusic,
     },
     {
         path: '/rank',
+        name: 'rank',
         component: Rank,
     },
     {
         path: '/album',
+        name: 'album',
         component: Album,
     },
     /*{
@@ -57,16 +64,18 @@ var routes = [{
     }
 
 
-
-
-
 ]
 
 const originPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function(location) {
-        originPush.call(this, location).catch(err => err);
-    }
-    //创建路由对象
+    originPush.call(this, location).catch(err => err);
+}
+
+//创建路由对象
+
+originPush.call(this, location).catch(err => err);
+
+//创建路由对象
 const router = new VueRouter({
     mode: 'history',
     routes
