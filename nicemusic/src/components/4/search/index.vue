@@ -1,7 +1,6 @@
 <template>
 <div class="pic">
-    <div class="filter">
-    </div>
+    
     <transition appear>
         <div class="frame">
         <div class="bgc">
@@ -28,11 +27,12 @@
                 
             </div>
         </div>
-        <div class="closeButton">
-            <span>❌</span>
+        <div class="closeButton" >
+            <i class="el-icon-circle-close " ></i>
         </div>
     </div>
     </transition>
+
 </div>
     
 </template>
@@ -44,19 +44,11 @@
     }
 
     .pic{
-        
         width: 100%;
         height: 624px;
     }
 
-    .filter{
-        position: absolute;
-        width: 1365px;
-        height: 624px;
-        background: url("./img/bg.png") no-repeat;
-        background-size: cover;
-        filter: blur(9px);
-    }
+  
 
     .frame{
         width: 825px;
@@ -116,7 +108,7 @@
         font-size: 16px;
     }
 
-    .blank span{
+    .blank span,.change{
         background: #F4F4F5;
         display: inline-block;
         margin-top: 5px;
@@ -166,6 +158,7 @@
         border-radius: 50%;
         margin: 30px auto;
         padding-left: 5px;
+        font-size: 40px;
     }
     
 </style>
@@ -186,7 +179,7 @@ export default {
             //添加新span节点
             var b = document.querySelector(".history");
             var newNode = document.createElement("span");
-            newNode.className="change";
+            newNode.classaName="change";
             b.appendChild(newNode);
             //获取输入框value
             var i = document.querySelector("#content").value;
