@@ -93,19 +93,20 @@
             backgroundSize: "100%",
             backgroundPosition:"center",
             width: "100%",  
-            height:"640px", 
+            height:"600px", 
+            // marginTop:"30px"
         },
         backgound:{
             backgroundColor:"rgba(0,0,0,0.6)",
-            marginTop:"-605px",
+            marginTop:"-600px",
             width: "100%",  
-            height:"570px", 
+            height:"600px", 
         },
         imgSrc1:require("../../../../assets/images/arrow-lr.png"),
         img1Style1:{
             width:"100%",
             position:"relative",
-            top:"-32px"
+            top:"-30px"
         },
         // 歌手头像
         circleUrl:require("../../../../assets/images/singer.jpg"),
@@ -129,7 +130,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     .block{
         display: block;
         padding-top: 100px;
