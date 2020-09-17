@@ -3,6 +3,7 @@
     <el-carousel :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="item in 6" :key="item">
         <h3 class="medium">{{ item }}</h3>
+        <img :src="item.src">
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -13,7 +14,12 @@
     name: 'Banner',
     data() {
       return {
-        banners: [],
+        banners: [
+          {
+            src:require('../../../assets/images/songlist.png'),
+            remarks: '变得温柔一些，生活也会顺遂很多'
+          }
+        ],
       }
     },
     computed: {

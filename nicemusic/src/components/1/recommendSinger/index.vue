@@ -82,6 +82,9 @@
 </script>
 
 <style scoped>
+  div h4 {
+    text-indent: 4vw;
+  }
   ul{
     list-style:none;
     width: 200px;
