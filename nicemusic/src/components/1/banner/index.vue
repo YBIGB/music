@@ -23,5 +23,6 @@ export default {
 .image {
   height: 300px;
   width: 760px;
+  border-radius: 5px;
 }
 </style>
