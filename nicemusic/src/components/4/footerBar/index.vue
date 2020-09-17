@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     
       <span>Unknown-GooseMother</span>
       <div class="list">
@@ -22,11 +22,11 @@
 
 #app {
   height: 20vh;
-  width: 100vw;
+  width: 100%;
   background-color: #161e27;
- 
   color: white;
   text-align: center;
+ 
 }
 img{
   margin:15px;
