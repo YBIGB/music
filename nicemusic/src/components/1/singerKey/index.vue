@@ -59,11 +59,15 @@
 
 <style scoped>
 div{
-    padding-top:10px;
+    padding-top:5px;
 }
-ul{
+ ul{
     list-style: none;
     padding-left: 0;
+    
+}
+li{
+    margin-left: 0;
 }
 ul li:first-child{
     background-color: red;
