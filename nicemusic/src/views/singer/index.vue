@@ -1,6 +1,7 @@
 <template>
     <div>
         <singer-key></singer-key>
+
         <recommend-singer></recommend-singer>
     </div>
 </template>
@@ -24,3 +25,4 @@
 </script>
 
 <style></style>
+
