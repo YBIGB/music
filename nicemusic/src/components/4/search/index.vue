@@ -4,35 +4,24 @@
     <transition appear>
         <div class="frame">
         <div class="bgc">
-            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="showHistory">
+            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="showHistoryAndGo">
         </div>
         <div class="blank">
             <img src="./img/fire.png" alt="">
             <p>热门搜索</p>
-            <span>中国新说唱 冷血</span>
-            <span>讽刺的情书</span>
-            <span>姚晨公开朋友圈</span>
-            <span>鱼丁糸</span>
-            <span>像小强一样活着</span>
-            <span>天外来物</span>
-            <span>Tfboys</span>
+            <span v-for="item in hots" :key="item">{{ item.first }}</span>
             <br>
             <br>
-            <span>巴巴爸爸我看见哦</span>
-            <span>米津玄师</span>
-            <span>Taylor Swift</span>
             <div class="history">
                 <img src="./img/footprint.png" alt="">
                 <p>历史搜索</p>
-                
             </div>
         </div>
-        <div class="closeButton" >
+        <div class="closeButton" @click="closeButton">
             <i class="el-icon-circle-close " ></i>
         </div>
     </div>
     </transition>
-
 </div>
     
 </template>
@@ -168,10 +157,26 @@ export default {
     name: "Search",
     data: function(){
         return{
+            hots: [],
         }
     },
     methods: {
-        showHistory:function(){
+        //----------------------------------------------------------------------------------
+        async getSearchHot() {
+      try {
+        let res = await this.$api.getSearchHot()
+        if (res.code === 200) {
+          this.hots = res.result.hots
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+        //------------------------------------------------------------------------------------
+        closeButton:function(){
+            document.querySelector(".frame").style.display = "none";
+        },
+        showHistoryAndGo:function(){
             //显示历史搜索记录
             document.querySelector(".history").style.display="block";
             var a = document.querySelector(".blank");
@@ -184,7 +189,12 @@ export default {
             //获取输入框value
             var i = document.querySelector("#content").value;
             document.querySelector(".history").lastElementChild.innerHTML= i;
+            this.$router.replace('/playList');
+            document.querySelector(".frame").style.display = "none";
         }
     },
+    mounted() {
+    this.getSearchHot();
+  }
 }
 </script>
