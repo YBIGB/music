@@ -6,6 +6,8 @@ import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
 import Login from '../views/login';
+import songs from '../components/3/singer/songs'
+import work from '../components/3/singer/work'
 import Personal from '../views/personal'
 
 // 测试right left插件
@@ -15,43 +17,56 @@ import Personal from '../views/personal'
 Vue.use(VueRouter);
 //路由配置
 var routes = [{
-        path: '/found',
-        name: 'found',
-        component: FoundMusic,
-    },
-    {
-        path: '/rank',
-        name: 'rank',
-        component: Rank,
-    },
-    {
-        path: '/album',
-        name: 'album',
-        component: Album,
-    },
-    {
-        path: '/singer',
-        component: Singer,
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        //     meta: {
-        //       title: '登录',
-        //       isLogin: true
-        //  }
-    }, {
-        path: '/personal',
-        name: 'personal',
-        component: Personal,
-    }
+    path: '/found',
+    name: 'found',
+    component: FoundMusic,
+},
+{
+    path: '/rank',
+    name: 'rank',
+    component: Rank,
+},
+{
+    path: '/album',
+    name: 'album',
+    component: Album,
+},
+{
+    path: '/login',
+    name: 'login',
+    component: Login,
+    //     meta: {
+    //       title: '登录',
+    //       isLogin: true
+    //  }
+}, {
+    path: '/personal',
+    component: Personal
+},
+{
+    path: '/singer',
+    component: Singer,
+    children: [
+        {
+            path: '/',
+            component: songs,
+        },
+        {
+            path: 'songs',
+            component: songs,
+        },
+        {
+            path: 'work',
+            component: work,
+        }
+    ]
+}
 
 
 ]
 
 const originPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function(location) {
+VueRouter.prototype.push = function (location) {
     originPush.call(this, location).catch(err => err);
 }
 

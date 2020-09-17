@@ -3,7 +3,7 @@
     <headerBar v-if="isLogin" @showSearch="isSearch=!isSearch"></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
-    <goTop v-if="isLogin"></goTop>
+    <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
     <player-bar v-if="isLogin"></player-bar>
     <div class="fly bg-fly-circle1"></div>
@@ -36,6 +36,7 @@ export default {
       posts: [],
     };
   },
+  //  ---------------------------------------------------------------- ----------------------------------------------------------------
   methods: {
     sss() {
       this.axios
@@ -44,6 +45,7 @@ export default {
           console.log(res);
         });
     },
+    //  --------------------------------------------------------------- -----------------------------------------------------------------
   },
 };
 </script>

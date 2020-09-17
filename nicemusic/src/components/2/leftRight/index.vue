@@ -4,46 +4,95 @@
   <el-aside width='250px'> 
     <div>
         <h4>云特色音乐榜</h4>
-      <ul>
-        <li class="left-li bgPink">
-        <img src="" alt="云音乐飙升榜" class="img1">
-        <p class="colorBlack">云音乐飙升榜</p>
-        <p class="colorGray">每天更新</p>
-        </li>
-        <li class="left-li">
-        <img src="" alt="云音乐新歌榜" class="img1">
-        <p class="colorBlack">云音乐新歌榜</p>
-        <p class="colorGray">每天更新</p>
-        </li>
-      </ul>
+       <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#D3DCE6">
+      <el-menu-item index="1">
+        <img src="" alt="图片" class="img1">
+        云音乐飙升榜
+        <span class="colorGray">每天更新</span> 
+      </el-menu-item>
+        <el-menu-item index="2" >
+       <img src="" alt="图片" class="img1">
+        云音乐飙升榜
+        <span class="colorGray">每天更新</span>
+      </el-menu-item>
+    <!-- </el-menu> -->
       <h4>全球媒体榜</h4>
+    
+       <!-- <el-menu class="el-menu-vertical-demo" background-color="#D3DCE6"> -->
+      <el-menu-item index="3" >
+        <img src="" alt="图片" class="img1">
+        云音乐飙升榜
+        <span class="colorGray">每天更新</span>
+      </el-menu-item>
+            <el-menu-item index="4" >
+        <img src="" alt="图片" class="img1">
+        云音乐飙升榜
+        <span class="colorGray">每天更新</span>
+      </el-menu-item>
+    </el-menu>
+      </div>
      
-      </div></el-aside>
+      </el-aside>
   <el-main>
     <div>
       <ul>
         <li class="rightLiBig">
-        <img src="" alt="" class="img2">
-        <div class="rightLiDiv">
+      <el-row>
+        <el-col :span="6" :xs="24"><div class="img2">
+           <img src="" alt="">
+         </div>
+    </el-col>
+  <el-col :span="18" :xs="24"> <div class="rightLiDiv">
         <h2>云音乐飙升榜</h2>
         <p class="colorGrayBig"><i class="el-icon-pie-chart"></i>最近更新：09月15日<span class="colorGray">（每天更新）</span></p>
+         <el-col :span="24" :xs='0'>
        <el-button-group style="z-index:0;position:relative"> <el-button type="primary" size='mini'><i class="el-icon-video-play"></i>播放</el-button>
         <el-button type="primary" size='mini'><i class="el-icon-plus"></i></el-button>
         </el-button-group>
-
-         <el-button size='mini'><i class="el-icon-folder-add"></i>(3359176)</el-button>
-          <el-button size='mini'><i class="el-icon-share"></i>(9070)</el-button>
-           <el-button size='mini'><i class="el-icon-download"></i>下载</el-button>
-            <el-button size='mini'><i class="el-icon-s-comment"></i>(195001)</el-button>
-        </div>
-      
+        <el-button size='mini'><i class="el-icon-folder-add"></i>(3359176)</el-button>
+        <el-button size='mini'><i class="el-icon-share"></i>(9070)</el-button>
+        <el-button size='mini'><i class="el-icon-download"></i>下载</el-button>
+        <el-button size='mini'><i class="el-icon-s-comment"></i>(195001)</el-button>
+            </el-col>
+        </div></el-col>
+</el-row>
         </li>
         <el-table :data="tableData" stripe style="width: 100%">
-    <el-table-column width="40" prop='number'></el-table-column>
-    <el-table-column prop="date" label="标题" ></el-table-column>
-    <el-table-column prop="name" label="时长" width="180"></el-table-column>
-    <el-table-column prop="address" label="歌手" width="180"></el-table-column>
-  </el-table>
+          <el-table-column width="50">
+            <template slot-scope="scope">{{scope.$index+1}}</template>
+          </el-table-column>
+        <el-table-column width="50"><img style="width:20px" src="" alt="歌曲封面"></el-table-column>
+        <el-table-column  width="30"><i class="el-icon-video-play"></i></el-table-column>
+        <el-table-column  prop="date" label="标题"></el-table-column>
+        <el-table-column prop="name" width="100">
+          <div>
+            <i class="el-icon-folder-add"></i>
+            <i class="el-icon-share"></i>
+            <i class="el-icon-download"></i>
+            <i class="el-icon-s-comment"></i>
+          </div>
+        </el-table-column>
+         <el-table-column prop="name" label="时长" width="100"></el-table-column>
+        <el-table-column prop="address" label="歌手" width="120"></el-table-column>
+        </el-table>
+
+          <el-table :data="tableData" stripe style="width: 100%" :show-header='false'>
+          <el-table-column width="50">
+            <template slot-scope="scope">{{scope.$index+4}}</template>
+          </el-table-column>
+        <el-table-column  width="30"><i class="el-icon-video-play"></i></el-table-column>
+        <el-table-column  prop="date" label="标题"></el-table-column>
+        <el-table-column prop="name" width="100">
+          <div>
+            <i class="el-icon-folder-add"></i>
+            <i class="el-icon-share"></i>
+            <i class="el-icon-download"></i>
+            <i class="el-icon-s-comment"></i>
+          </div>
+        </el-table-column>
+         <el-table-column prop="name" label="时长" width="100"></el-table-column>
+        <el-table-column prop="address" label="歌手" width="120"></el-table-column>
+        </el-table>
       </ul>
       </div> </el-main>
 </el-container>
@@ -54,8 +103,8 @@
 <script>
 
 export default {
-  name:'index',
-   data() {
+    name:'index',
+    data() {
       return {
         tableData: [{
           number:1,
@@ -72,15 +121,12 @@ export default {
           date: '所念皆星河',
           name: '王小虎',
           address: '上海市普陀区'
-        }, {
-          number:4,
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀'
         }]
       }
-    }
+    },
+    methods:{
 
+    }
 }
 </script>
 
@@ -115,34 +161,29 @@ h4{
   font-weight: 500;
   font-size: 17px;
 }
-.left-li{
-  height: 60px;
-  padding: 20px;
-  border: solid 1px salmon;
-}
-.bgPink{
-    background-color: #e6e6e6  ;
-}
+
+
 .img1{
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   float: left;
   border: olivedrab 1px solid;
-  margin-right: 10px;
+  margin-top: 8px;
+
 }
 .img2{
-  width: 150px;
-  height: 150px;
-  float: left;
+ width: 90%;
+ height: 150px;
+  /* float: left; */
   border: olivedrab 1px solid;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 
 .colorBlack{
   color: black;
-  font-size: 16px;
-  margin-bottom:10px ;
+  font-size: 14px;
+  /* margin-bottom:10px ; */
 }
 
 .colorGray{
@@ -164,13 +205,13 @@ h2{
 
 .rightLiBig{
   padding-bottom:20px;
-  background-color: pink;
+  /* background-color: pink; */
   height: 170px;
 }
 .rightLiDiv{
   margin-top: 20px;
   background-color: #fff;
-  float: right;
-  width: 490px;
+  /* float: right; */
+  /* width: 490px; */
 }
 </style>

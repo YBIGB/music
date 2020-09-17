@@ -1,5 +1,5 @@
 <template>
-  <div>
+  
     <div class="abCompo">
       <img class="albumCover" src="../../../../../assets/images/zhou.jpg" alt />
       <p class="albumName">歌单名称</p>
@@ -8,7 +8,7 @@
         <span class="number">999</span>
       </span>
     </div>
-  </div>
+  
 </template>
 
 <script>
