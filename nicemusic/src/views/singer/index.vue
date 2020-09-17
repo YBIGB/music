@@ -1,27 +1,21 @@
 <template>
     <div>
-        <banner></banner>
-        <recommend-songs></recommend-songs>
-        <recommend-music></recommend-music>
+        <singer-key></singer-key>
         <recommend-singer></recommend-singer>
     </div>
 </template>
 
 <script>
-    import Banner from '../../components/1/banner'
-    import RecommendSongs from '../../components/1/recommendSongs'
-    import RecommendMusic from '../../components/1/recommendMusic'
+    import singerKey from '../../components/1/singerKey'
     import RecommendSinger from '../../components/1/recommendSinger'
 
     export default {
-        name: 'foundMusic',
+        name: 'singer',
         data() {
             return {}
         },
         components: {
-            Banner,
-            RecommendSongs,
-            RecommendMusic,
+            singerKey,
             RecommendSinger
         },
         methods: {},

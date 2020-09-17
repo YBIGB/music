@@ -6,6 +6,9 @@ import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
 import Login from '../views/login';
+import songs from '../components/3/singer/songs'
+import work from '../components/3/singer/work'
+import Personal from '../views/personal'
 
 // 测试right left插件
 
@@ -20,18 +23,18 @@ var routes = [{
     },
     {
         path: '/rank',
-        name:'rank',
+        name: 'rank',
         component: Rank,
     },
     {
         path: '/album',
-        name:'album',
+        name: 'album',
         component: Album,
     },
-    {
+    /*{
         path: '/singer',
         component: Singer,
-    },
+    },*/
     {
         path: '/login',
         name: 'login',
@@ -41,7 +44,25 @@ var routes = [{
         //       isLogin: true
         //  }
     },
-  
+    {
+        path:'/singer',
+        component:Singer,
+        children:[
+            {
+                path: '/',
+                component:songs,
+            },
+            {
+                path:'songs',
+                component:songs,
+            },
+            {
+                path:'work',
+                component:work,
+            }
+        ]
+    }
+
 
 ]
 
