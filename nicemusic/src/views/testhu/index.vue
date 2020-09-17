@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import singer from '../../components/3/singer/index.vue'
+import singer from '../../components/3/singer/singerDetails/index'
 export default {
-    name:'singer',
+    name:'singerDetails',
     components:{
         singer,
     }
