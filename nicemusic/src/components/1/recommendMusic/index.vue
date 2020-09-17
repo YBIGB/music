@@ -66,6 +66,7 @@
       </div></el-col>
       <el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1"><div class="grid-content bg-purple-light"></div></el-col>
     </el-row>
+    <h4>推荐歌手</h4>
   </div>
 </template>
 
@@ -88,6 +89,7 @@
     }
   }
 </script>
+
 
 <style scoped>
   /*.el-col {*/
@@ -113,3 +115,4 @@
     width: 45vw;
   }
 </style>
+
