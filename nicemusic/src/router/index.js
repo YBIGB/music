@@ -6,6 +6,10 @@ import Rank from '../views/rank'
 import Album from '../views/album'
 import Singer from '../views/singer'
 import Login from '../views/login';
+import singerDetails from '../views/testhu'
+import songs from '../components/3/singer/singerDetails/songs'
+import work from '../components/3/singer/singerDetails/work'
+import Personal from '../views/personal'
 
 // 测试right left插件
 
@@ -20,18 +24,18 @@ var routes = [{
     },
     {
         path: '/rank',
-        name:'rank',
+        name: 'rank',
         component: Rank,
     },
     {
         path: '/album',
-        name:'album',
+        name: 'album',
         component: Album,
     },
-    {
+    /*{
         path: '/singer',
         component: Singer,
-    },
+    },*/
     {
         path: '/login',
         name: 'login',
@@ -41,12 +45,45 @@ var routes = [{
         //       isLogin: true
         //  }
     },
-  
+    {
+        path:'/singer',
+        component:Singer,
+        
+            
+        
+    },
+    {
+        path: '/personal',
+        component: Personal
+    },
+    {
+        path:'/singerDetails',
+        component:singerDetails,
+        children:[
+            {
+                path: '/',
+                component:songs,
+            },
+            {
+                path:'songs',
+                component:songs,
+            },
+            {
+                path:'work',
+                component:work,
+            }
+        ]
+    }
+    
+   
+
+
+
 
 ]
 
 const originPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function(location) {
+VueRouter.prototype.push = function (location) {
     originPush.call(this, location).catch(err => err);
 }
 
