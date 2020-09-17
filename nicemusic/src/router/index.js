@@ -53,6 +53,10 @@ var routes = [{
         
     },
     {
+        path: '/personal',
+        component: Personal
+    },
+    {
         path:'/singerDetails',
         component:singerDetails,
         children:[
@@ -70,13 +74,16 @@ var routes = [{
             }
         ]
     }
+    
+   
+
 
 
 
 ]
 
 const originPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function(location) {
+VueRouter.prototype.push = function (location) {
     originPush.call(this, location).catch(err => err);
 }
 

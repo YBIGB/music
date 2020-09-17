@@ -1,9 +1,9 @@
 <template>
   <div style="position:relative;">
-    <headerBar v-if="isLogin"  @showSearch='isSearch=!isSearch'></headerBar>
+    <headerBar v-if="isLogin" @showSearch="isSearch=!isSearch"></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
-    <goTop     v-if="isLogin"></goTop>
+    <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
     <player-bar v-if="isLogin"></player-bar>
     <div class="fly bg-fly-circle1"></div>
@@ -19,7 +19,7 @@ import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
-import PlayerBar from './components/4/playerBar'
+import PlayerBar from "./components/4/playerBar";
 export default {
   name: "home",
   components: {
@@ -27,31 +27,35 @@ export default {
     footerBar,
     goTop,
     searchBox,
-    PlayerBar
+    PlayerBar,
   },
   data() {
     return {
       isLogin: true,
-      isSearch:false,
-      posts:[]
+      isSearch: false,
+      posts: [],
     };
   },
- methods: {
-   sss() {
-    this.axios.get("http://localhost:3000/song/detail?ids=347230,347231").then((res) => {
-      console.log(res)
-    });
+  //  ---------------------------------------------------------------- ----------------------------------------------------------------
+  methods: {
+    sss() {
+      this.axios
+        .get("http://localhost:3000/song/detail?ids=347230,347231")
+        .then((res) => {
+          console.log(res);
+        });
+    },
+    //  --------------------------------------------------------------- -----------------------------------------------------------------
   },
- },
 };
 </script>
 
 <style lang="less" scoped>
-#searchBox{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
+#searchBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   margin: 0 auto;
 }
 
@@ -66,7 +70,11 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: linear-gradient(to right, rgba(100, 84, 239, 0.27) 0%, rgba(48, 33, 236, 0.04) 100%);
+  background: linear-gradient(
+    to right,
+    rgba(100, 84, 239, 0.27) 0%,
+    rgba(48, 33, 236, 0.04) 100%
+  );
   animation: move 2.5s linear infinite;
 }
 
@@ -76,7 +84,11 @@ export default {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: linear-gradient(to right, rgba(100, 84, 239, 0.18) 0%, rgba(48, 33, 236, 0.04) 100%);
+  background: linear-gradient(
+    to right,
+    rgba(100, 84, 239, 0.18) 0%,
+    rgba(48, 33, 236, 0.04) 100%
+  );
   animation: move 3s linear infinite;
 }
 
@@ -86,7 +98,11 @@ export default {
   width: 145px;
   height: 145px;
   border-radius: 50%;
-  background: linear-gradient(to right, rgba(100, 84, 239, 0.1) 0%, rgba(48, 33, 236, 0.14) 100%);
+  background: linear-gradient(
+    to right,
+    rgba(100, 84, 239, 0.1) 0%,
+    rgba(48, 33, 236, 0.14) 100%
+  );
   animation: move 2.5s linear infinite;
 }
 
@@ -96,7 +112,11 @@ export default {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: linear-gradient(to bottom, rgba(100, 84, 239, 0.22) 0%, rgba(48, 33, 236, 0.04) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(100, 84, 239, 0.22) 0%,
+    rgba(48, 33, 236, 0.04) 100%
+  );
   animation: move 3.5s linear infinite;
 }
 

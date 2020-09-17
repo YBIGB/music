@@ -70,6 +70,7 @@ export default {
 .loginBg {
   height: 100vh;
   background: #5dd5c8;
+  overflow: hidden;
 }
 .loginForm {
   text-align: center;
@@ -81,5 +82,6 @@ export default {
   height: 430px;
   margin: 0 auto;
   top: 100px;
+  box-shadow: aqua 0 0 6px;
 }
 </style>

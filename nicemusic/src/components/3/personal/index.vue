@@ -19,9 +19,13 @@
         <div class="box personalSongs">
           <personal-songs></personal-songs>
         </div>
-        <div class="box personalAlbum">
+        <div class="box personalAlbum" >
           <personal-album></personal-album>
           <personal-album></personal-album>
+          <personal-album></personal-album>
+          <personal-album></personal-album>
+          <personal-album></personal-album>
+          
         </div>
       </div>
     </div>
@@ -45,7 +49,7 @@ export default {
 
 <style lang='less'>
 .container {
-  height: 1000px;
+  margin-bottom: 200px;
   // overflow: hidden;
   font-size: 12px;
 }
