@@ -4,7 +4,7 @@
                 <el-table
                 :data="tableData"
                 stripe
-                style="width: 98%; marginBottom:50px; paddingLeft:20px"
+                style="width: 100%; marginBottom:50px; paddingLeft:20px"
                 class="tableList">
                 <el-table-column
                 prop="num"
@@ -13,14 +13,18 @@
                 class="number">
                 </el-table-column>
                 <el-table-column
+                width="55">
+                <img :src="imgSrc" :style="imgStyle">
+                </el-table-column>
+                <el-table-column
                 prop="name"
                 label="歌曲"
-                width="480">
+                width="300">
                 </el-table-column>
                 <el-table-column
                 prop="singerName"
                 label="歌手"
-                width="280">
+                width="170">
                 </el-table-column>
                 <el-table-column
                 prop="address"
@@ -40,6 +44,10 @@ export default {
     name:"songs",
     data(){
         return{
+          imgSrc:require("../../../../assets/images/singer.jpg"),
+          imgStyle:{
+            width:"40px",
+          },
             // 歌单
         tableData: [{
           num: '01',
