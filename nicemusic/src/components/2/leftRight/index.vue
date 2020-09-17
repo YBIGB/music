@@ -1,11 +1,21 @@
 <template>
   <div class="main">
     <el-row>
-  <el-col :span="24">  <img src="../../../assets/images/logbg.jpg" alt="" class="img2"></el-col>
+  <el-col :span="24"> 
+     <!-- <img src="../../../assets/images/logbg.jpg" alt="" class="img2"> -->
+
+  <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel-item v-for="item in 6" :key="item">
+      <h3 class="medium">{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
+
+     </el-col>
 </el-row>
     <el-container>
-  <el-aside width='200px'> 
+  <el-aside width='220px'> 
     <div>
+      
        <!-- <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"> -->
@@ -44,33 +54,33 @@
 <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
   <el-submenu index="1">
     <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title">导航一</span>
+       <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
+        <!-- 云音乐飙升榜 -->
+        <!-- <span class="colorGray">每天更新</span>  -->
     </template>
     <el-menu-item-group>
-      <span slot="title">分组一</span>
-      <el-menu-item index="1-1">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
+      <span slot="title"> 
+         <!-- <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"> -->
+     </span>
+      <el-menu-item index="1-1">特色歌单</el-menu-item>
+      <el-menu-item index="1-2"> <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"></el-menu-item>
+       <el-menu-item index="1-3"> <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"></el-menu-item>
     </el-menu-item-group>
-    <el-menu-item-group title="分组2">
+    <!-- <el-menu-item-group title="分组2">
       <el-menu-item index="1-3">选项3</el-menu-item>
     </el-menu-item-group>
     <el-submenu index="1-4">
       <span slot="title">选项4</span>
       <el-menu-item index="1-4-1">选项1</el-menu-item>
-    </el-submenu>
+    </el-submenu> -->
   </el-submenu>
   <el-menu-item index="2">
-    <i class="el-icon-menu"></i>
-    <span slot="title">导航二</span>
+<img src="../../../assets/images/pljj3.jpeg" alt="图片" class="img1"> 
+    <span slot="title">云音乐飙升榜</span>
   </el-menu-item>
-  <el-menu-item index="3" disabled>
-    <i class="el-icon-document"></i>
-    <span slot="title">导航三</span>
-  </el-menu-item>
-  <el-menu-item index="4">
-    <i class="el-icon-setting"></i>
-    <span slot="title">导航四</span>
+  <el-menu-item index="3">
+<img src="../../../assets/images/pljj4.jpeg" alt="图片" class="img1"> 
+    <span slot="title">云音乐飙升榜</span>
   </el-menu-item>
 </el-menu>
 
@@ -176,8 +186,8 @@ export default {
   margin: 0 auto;
   width: 80vw;
   border-radius: 10px;
-  border: black 2px solid; 
-  background-color: black;
+  /* border: black 2px solid;  */
+  /* background-color: black; */
   
   background-size:contain;
 } 
@@ -266,5 +276,25 @@ h2{
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
+  }
+
+    .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
+  
+  .el-carousel__item:nth-child(2n) {
+    /* background-color: #99a9bf; */
+    background: url("../../../assets/images/pljj3.jpeg");
+    background-size: contain;
+  }
+  
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+     background: url("../../../assets/images/pljj4.jpeg");
+         background-size: contain;
   }
 </style>
