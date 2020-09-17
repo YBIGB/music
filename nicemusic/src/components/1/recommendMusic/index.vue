@@ -89,6 +89,7 @@
   }
 </script>
 
+
 <style scoped>
   /*.el-col {*/
   /*  border-radius: 4px;*/
@@ -113,3 +114,4 @@
     width: 45vw;
   }
 </style>
+
