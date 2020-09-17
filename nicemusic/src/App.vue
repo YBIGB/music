@@ -33,17 +33,20 @@ export default {
     return {
       isLogin: true,
       isSearch: false,
-      posts: [],
+      singers: [],
     };
   },
   //  ---------------------------------------------------------------- ----------------------------------------------------------------
   methods: {
-    sss() {
-      this.axios
-        .get("http://localhost:3000/song/detail?ids=347230,347231")
-        .then((res) => {
-          console.log(res);
-        });
+   async sss() {
+      try {
+        let res = await this.$api.getHotSinger()
+        if (res.code === 200) {
+          this.singers = res.artists
+        }
+      } catch (error) {
+        console.log(error)
+      }
     },
     //  --------------------------------------------------------------- -----------------------------------------------------------------
   },
@@ -57,6 +60,7 @@ export default {
   left: 0;
   right: 0;
   margin: 0 auto;
+  z-index: 999;
 }
 
 .fly {
