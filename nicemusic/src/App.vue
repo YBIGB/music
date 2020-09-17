@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#searchBox{
+#searchBox{ 
   position:absolute;
   top:0;
   left:0;
