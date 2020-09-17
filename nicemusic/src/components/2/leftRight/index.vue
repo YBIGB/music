@@ -1,155 +1,84 @@
 <template>
   <div class="main">
-    <el-row>
-  <el-col :span="24"> 
-     <!-- <img src="../../../assets/images/logbg.jpg" alt="" class="img2"> -->
-
-  <el-carousel :interval="4000" type="card" height="200px">
-    <el-carousel-item v-for="item in 6" :key="item">
-      <h3 class="medium">{{ item }}</h3>
-    </el-carousel-item>
-  </el-carousel>
-
-     </el-col>
-</el-row>
-    <el-container>
-  <el-aside width='220px'> 
-    <div>
-      
-       <!-- <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"> -->
-
-<!-- <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"> -->
-       <!-- <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#b8b8ba">  -->
-      <!-- <h4>云特色音乐榜</h4>
-      <el-menu-item index="1">
-        <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
-        云音乐飙升榜
-        <span class="colorGray">每天更新</span> 
-      </el-menu-item>
-        <el-menu-item index="2" >
-       <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
-        云音乐飙升榜
-        <span class="colorGray">每天更新</span>
-      </el-menu-item>
-      <h4>全球媒体榜</h4>
-    
-      <el-menu-item index="3" >
-        <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
-        云音乐飙升榜
-        <span class="colorGray">每天更新</span>
-      </el-menu-item>
-            <el-menu-item index="4" >
-        <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
-        云音乐飙升榜
-        <span class="colorGray">每天更新</span>
-      </el-menu-item> -->
-    <!-- </el-menu> -->
-
-<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-  <el-radio-button :label="false">展开</el-radio-button>
-  <el-radio-button :label="true">收起</el-radio-button>
-</el-radio-group>
-<el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-submenu index="1">
-    <template slot="title">
-       <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1">
-        <!-- 云音乐飙升榜 -->
-        <!-- <span class="colorGray">每天更新</span>  -->
-    </template>
-    <el-menu-item-group>
-      <span slot="title"> 
-         <!-- <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"> -->
-     </span>
-      <el-menu-item index="1-1">特色歌单</el-menu-item>
-      <el-menu-item index="1-2"> <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"></el-menu-item>
-       <el-menu-item index="1-3"> <img src="../../../assets/images/logbg.jpg" alt="图片" class="img1"></el-menu-item>
-    </el-menu-item-group>
-    <!-- <el-menu-item-group title="分组2">
-      <el-menu-item index="1-3">选项3</el-menu-item>
-    </el-menu-item-group>
-    <el-submenu index="1-4">
-      <span slot="title">选项4</span>
-      <el-menu-item index="1-4-1">选项1</el-menu-item>
-    </el-submenu> -->
-  </el-submenu>
-  <el-menu-item index="2">
-<img src="../../../assets/images/pljj3.jpeg" alt="图片" class="img1"> 
-    <span slot="title">云音乐飙升榜</span>
-  </el-menu-item>
-  <el-menu-item index="3">
-<img src="../../../assets/images/pljj4.jpeg" alt="图片" class="img1"> 
-    <span slot="title">云音乐飙升榜</span>
-  </el-menu-item>
-</el-menu>
-
-      </div>
+  <div class="wrapper">
+        <div class="parallax-img1">
+       
      
-      </el-aside>
-  <el-main>
-    <div>
-      <ul>
-        <!-- <li class="rightLiBig"> -->
-      <!-- <el-row> -->
-        <!-- <el-col :span="6" :xs="24"><div>
-           <img src="../../../assets/images/logbg.jpg" alt="" class="img2">
-         </div>
-    </el-col> -->
-  <!-- <el-col :span="18" :xs="24"> <div class="rightLiDiv">
-        <h2>云音乐飙升榜</h2>
-        <p class="colorGrayBig"><i class="el-icon-pie-chart"></i>最近更新：09月15日<span class="colorGray">（每天更新）</span></p>
-         <el-col :span="24" :xs='0'>
-       <el-button-group style="z-index:0;position:relative"> <el-button type="primary" size='mini'><i class="el-icon-video-play"></i>播放</el-button>
-        <el-button type="primary" size='mini'><i class="el-icon-plus"></i></el-button>
-        </el-button-group>
-        <el-button size='mini'><i class="el-icon-folder-add"></i>(3359176)</el-button>
-        <el-button size='mini'><i class="el-icon-share"></i>(9070)</el-button>
-        <el-button size='mini'><i class="el-icon-download"></i>下载</el-button>
-        <el-button size='mini'><i class="el-icon-s-comment"></i>(195001)</el-button>
-            </el-col>
-        </div></el-col> -->
-<!-- </el-row> -->
-        <!-- </li> -->
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column width="50">
-            <template slot-scope="scope">{{scope.$index+1}}</template>
-          </el-table-column>
-        <el-table-column width="40"><img style="width:30px" src="../../../assets/images/logbg.jpg" alt="歌曲封面"></el-table-column>
-        <el-table-column  width="30"><i class="el-icon-video-play"></i></el-table-column>
-        <el-table-column  prop="date" label="标题"></el-table-column>
-        <!-- <el-table-column prop="name" width="100">
-          <div>
-            <i class="el-icon-folder-add"></i>
-            <i class="el-icon-share"></i>
-            <i class="el-icon-download"></i>
-            <i class="el-icon-s-comment"></i>
-          </div>
-        </el-table-column> -->
-         <el-table-column prop="name" label="时长" width="100"></el-table-column>
-        <el-table-column prop="address" label="歌手" width="120"></el-table-column>
-        </el-table>
+     <div class="container">
+        <div class="wrap">
+            <div class="image">
+                <div class="display front">
+                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
+                </div>
+                <div class="display back">
+                    <h3>云音乐榜</h3>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="image">
+                <div class="display front">
+                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
+                </div>
+                <div class="display back">
+                    <h3>云音乐榜</h3>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="image">
+                <div class="display front">
+                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
+                </div>
+                <div class="display back">
+                    <h3>云音乐榜</h3>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="image">
+                <div class="display front">
+                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
+                </div>
+                <div class="display back">
+                    <h3>云音乐榜</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+        </div>
+        <div class="center">
+            <h1>榜单歌曲</h1>
+            <p>
+                            <el-table :data="tableData" stripe style="width: 100%">
+                    <el-table-column width="50">
+                        <template slot-scope="scope">{{scope.$index+1}}</template>
+                    </el-table-column>
+                    <el-table-column width="40"><img style="width:30px;height:30px" src="../../../assets/images/logbg.jpg" alt="歌曲封面"></el-table-column>
+                    <el-table-column width="30"><i class="el-icon-video-play"></i></el-table-column>
+                    <el-table-column prop="date" label="标题"></el-table-column>
+                    <el-table-column prop="name" label="时长" width="100"></el-table-column>
+                    <el-table-column prop="address" label="歌手" width="120"></el-table-column>
+                </el-table>
 
-          <el-table :data="tableData" stripe style="width: 100%" :show-header='false'>
-          <el-table-column width="50">
-            <template slot-scope="scope">{{scope.$index+4}}</template>
-          </el-table-column>
-        <el-table-column  width="30"><i class="el-icon-video-play"></i></el-table-column>
-        <el-table-column  prop="date" label="标题"></el-table-column>
-        <!-- <el-table-column prop="name" width="100">
-          <div>
-            <i class="el-icon-folder-add"></i>
-            <i class="el-icon-share"></i>
-            <i class="el-icon-download"></i>
-            <i class="el-icon-s-comment"></i>
-          </div>
-        </el-table-column> -->
-         <el-table-column prop="name" label="时长" width="100"></el-table-column>
-        <el-table-column prop="address" label="歌手" width="120"></el-table-column>
-        </el-table>
-      </ul>
-      </div> </el-main>
-</el-container>
+                <el-table :data="tableData" stripe style="width: 100%" :show-header='false'>
+                    <el-table-column width="50">
+                        <template slot-scope="scope">{{scope.$index+4}}</template>
+                    </el-table-column>
+                    <el-table-column width="30"><i class="el-icon-video-play"></i></el-table-column>
+                    <el-table-column prop="date" label="标题"></el-table-column>
+                    <el-table-column prop="name" label="时长" width="100"></el-table-column>
+                    <el-table-column prop="address" label="歌手" width="120"></el-table-column>
+                </el-table>
+            </p>
+        </div>
+        <div class="parallax-img2">
+            <div class="caption">
+                <span>查看更多</span>
+            </div>
+        </div>
+    </div>
 
   </div>
 </template>
@@ -178,123 +107,166 @@ export default {
 
 <style scoped>
 
-*{
-  padding: 0;
-  margin: 0;
-}
-.main {
-  margin: 0 auto;
-  width: 80vw;
-  border-radius: 10px;
-  /* border: black 2px solid;  */
-  /* background-color: black; */
-  
-  background-size:contain;
-} 
-.el-aside {
-  /* */
-  color: #333;
-  /* background-color:"#353D48"; */
-  /* border: 1px solid #d3d3d3; */
-  /* background: url('../../../assets/images/pljj5.jpeg') no-repeat; */
-  /* background-size: cover; */
-  /* background-position: 150 */
-    background-color: #222222;
-}
 
-.el-main {
-  background-color: #222222;
-  color: #333;
-  padding: 40px;
-  /* background: url('../../../assets/images/pljj3.jpeg'); */
- 
-}
-li {
-  list-style: none;
- 
-}
-h4{
-  margin:20px ;
-  /* color: #ffff; */
-  margin-top:40px;
-  font-weight: 500;
-  font-size: 17px;
-}
-
-
-.img1{
-  width: 40px;
-  height: 40px;
-  float: left;
-  border: olivedrab 1px solid;
-  margin-top: 8px;
-
-}
-.img2{
- width: 100%;
- height: 150px;
-  /* float: left; */
-  border: olivedrab 1px solid;
-  /* margin-right: 10px; */
-}
-
-
-.colorBlack{
-  color: #ffff;
-  font-size: 14px;
-  /* margin-bottom:10px ; */
-}
-
-.colorGray{
-  color: gray;
-    font-size: 12px;
-}
-
-h2{
-  font-weight: 500;
-  margin-bottom: 10px;
-  font-size: 22px;
-}
-
-.colorGrayBig{
-  font-size: 15px;
-  color: rgb(90, 86, 86);
-  margin-bottom: 20px;
-}
-
-.rightLiBig{
-  padding-bottom:20px;
-  /* background-color: pink; */
-  height: 170px;
-}
-.rightLiDiv{
-  margin-top: 20px;
-  /* background-color: #fff; */
-  /* float: right; */
-  /* width: 490px; */
-}
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-
-    .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
+  * {
+    padding: 0;
     margin: 0;
-  }
-  
-  .el-carousel__item:nth-child(2n) {
-    /* background-color: #99a9bf; */
-    background: url("../../../assets/images/pljj3.jpeg");
-    background-size: contain;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-     background: url("../../../assets/images/pljj4.jpeg");
-         background-size: contain;
-  }
+    /* font-family: Candara; */
+    box-sizing: border-box;
+}
+
+.main {
+    background: #202020;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.parallax-img1 {
+    height: 400px;
+    background-image: url('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/7/thumb.jpg');
+}
+
+.parallax-img2 {
+    min-height: 400px;
+    background-image: url('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/5/thumb.jpg');
+}
+
+.parallax-img1,
+.parallax-img2 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.caption1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    text-align: center;
+    display: flex; 
+     justify-content: center;
+}
+
+
+.caption>span {
+    background: rgb(32, 32, 32, 0.85);
+    color: #82fcfd;
+    padding: 18px 50px;
+    font-size: 30px;
+    border-radius: 16px;
+}
+
+.caption1>span {
+    background: rgb(32, 32, 32, 0.85);
+    color: #82fcfd;
+    /* padding: 18px 50px; */
+    /* font-size: 30px; */
+    border-radius: 16px;
+}
+
+.caption p {
+    margin: 0 0 15px 0;
+    padding: 0 0 15px 0;
+    border-bottom: 2px solid #82fcfd;
+}
+
+.caption>span p {
+    font-size: 40px;
+}
+
+p {
+    margin: 15px;
+    font-size: 1.1rem;
+    padding: 1.5rem 5rem;
+    color: #fff;
+}
+
+.center {
+    width: 1000px;
+    margin: 0 auto;
+    color: #ddd;
+}
+
+h1 {
+    text-align: center;
+    margin: 3rem 0 0 0;
+    color: #fff;
+}
+
+.block {
+ box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    margin-top: 3em;
+    clear: left;
+}
+
+.wrap {
+    perspective: 400;
+    -moz-perspective: 400;
+    float: left;
+    width: 220px;
+    margin-right: 20px;
+}
+
+.image {
+    width: 100%;
+    height: 80px;
+    transform-style: preserve-3d;
+    transition: 1.5s;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: 1.5s;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.wrap:hover .image {
+   transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+.display {
+    position: absolute;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.display h3 {
+    color: white;
+    text-align: center;
+}
+
+.back {
+   transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726));
+    background: -moz-linear-gradient(top, #fdbb5a, #db5726);
+    width: 220px;
+    height: 200px;
+    line-height: 200px;
+}
 </style>
