@@ -9,6 +9,7 @@ import VueAxios from 'vue-axios';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/index.js'
 
 
 import getApi from '@/api/index'

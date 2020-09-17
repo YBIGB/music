@@ -1,15 +1,25 @@
 <template>
-  <div>
-    <singer></singer>
-  </div>
+    <div>
+
+        <recommend-singer></recommend-singer>
+    </div>
 </template>
 
 <script>
-import singer from "../../components/3/singer/index.vue";
-export default {
-  name: "Singer",
-  components: {
-    singer,
-  },
-};
+    import RecommendSinger from '../../components/1/recommendSinger'
+
+    export default {
+        name: 'singer',
+        data() {
+            return {}
+        },
+        components: {
+            RecommendSinger
+        },
+        methods: {},
+        mounted() {}
+    }
 </script>
+
+<style></style>
+
