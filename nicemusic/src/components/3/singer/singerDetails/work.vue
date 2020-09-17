@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .details{
         // display: none;
         margin-left: 60px;
