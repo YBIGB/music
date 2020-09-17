@@ -19,13 +19,12 @@
         <div class="box personalSongs">
           <personal-songs></personal-songs>
         </div>
-        <div class="box personalAlbum" >
+        <div class="box personalAlbum">
           <personal-album></personal-album>
           <personal-album></personal-album>
           <personal-album></personal-album>
           <personal-album></personal-album>
           <personal-album></personal-album>
-          
         </div>
       </div>
     </div>
@@ -43,6 +42,29 @@ export default {
     personalDetail,
     personalSongs,
     personalAlbum,
+  },
+  data() {
+    return {};
+  },
+  mounted() {
+    setTimeout(() => {
+      getPersonalDetails();
+    }, 5000);
+  },
+  methods: {
+    async getPersonalDetails() {
+      var uid = 1005;
+      try {
+        let res = await this.$api.getUserDetail(uid);
+        console.log(res.data);
+        if (res.code == 200) {
+          console.log(res);
+          this.loginStatus = res;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>

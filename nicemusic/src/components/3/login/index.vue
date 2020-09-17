@@ -26,7 +26,7 @@
           </el-row>
           <el-row :gutter="20">
             <el-col :span="16" :offset="4">
-              <el-button type="primary">登录</el-button>
+              <el-button type="primary" @click="login">登录</el-button>
             </el-col>
           </el-row>
         </form>
@@ -44,7 +44,25 @@ export default {
     return {
       inputU: "",
       inputP: "",
+      loginStatus: {},
     };
+  },
+  methods: {
+    async login() {
+      var phone = this.inputU;
+      var password = this.inputP;
+      // console.log(phone, password);
+      try {
+        let res = await this.$api.login(phone, password);
+        console.log(res.data);
+        if (res.code == 200) {
+          console.log(res);
+          this.loginStatus = res;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   components: {
     KinesisContainer,

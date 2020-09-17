@@ -5,9 +5,9 @@ import api from './instance'
  * @params phone 用户id
  */
 export const login = (phone, password) =>
-  api.get(`/login/cellphone?phone=${phone}&password=${password}`, {
-    withCredentials: true
-  })
+    api.get(`/login/cellphone?phone=${phone}&password=${password}`, {
+        // withCredentials: true
+    })
 
 /**
  * @method 获取用户详情
@@ -22,7 +22,7 @@ export const getUserDetail = uid => api.get(`/user/detail?uid=${uid}`, {})
  */
 
 export const getUserRecord = (uid, type) =>
-  api.get(`/user/record?uid=${uid}&type=${type}`, {})
+    api.get(`/user/record?uid=${uid}&type=${type}`, {})
 
 /**
  * @method 获取用户歌单
