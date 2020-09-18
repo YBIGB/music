@@ -130,7 +130,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .block{
         display: block;
         padding-top: 100px;
