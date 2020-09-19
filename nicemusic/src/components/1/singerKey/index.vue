@@ -59,15 +59,20 @@
 
 <style scoped>
 div{
-    padding-top:10px;
+    padding-top:5px;
 }
-ul{
+ ul{
     list-style: none;
     padding-left: 0;
+    
+}
+li{
+    margin-left: 0;
 }
 ul li:first-child{
     background-color: red;
     color:white;
+    margin-left:40px;
 }
 li,.circle li:first-child{
     display: inline-block;
@@ -76,7 +81,7 @@ li,.circle li:first-child{
     line-height: 30px;
     text-align: center;
     margin-right: 15px;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 20px 20px 20px 20px;
     cursor:pointer;
 }
 li:hover{

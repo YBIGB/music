@@ -44,15 +44,12 @@ export default {
     personalAlbum,
   },
   data() {
-    return {};
-  },
-  mounted() {
-    setTimeout(() => {
-      getPersonalDetails();
-    }, 5000);
+    return {
+      personalDetails: {},
+    };
   },
   methods: {
-    async getPersonalDetails() {
+    async getP() {
       var uid = 1005;
       try {
         let res = await this.$api.getUserDetail(uid);
@@ -66,10 +63,24 @@ export default {
       }
     },
   },
+  mounted() {
+    var id = 347230;
+    var timestamp = +new Date();
+    try {
+      let res = this.$api.getSongDetail(id, timestamp);
+      console.log(res.data);
+      if (res.code == 200) {
+        console.log(res);
+        this.personalDetails = res;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .container {
   margin-bottom: 200px;
   // overflow: hidden;

@@ -6,7 +6,11 @@ import api from './instance'
  */
 export const login = (phone, password) =>
     api.get(`/login/cellphone?phone=${phone}&password=${password}`, {
-        // withCredentials: true
+        withCredentials: true
+    })
+export const loginMd5 = (phone, password) =>
+    api.get(`/login/cellphone?phone=${phone}&md5_password=${password}`, {
+        withCredentials: true
     })
 
 /**

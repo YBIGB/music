@@ -39,6 +39,7 @@
 import "../../../assets/3d/vanilla-tilt.min.js";
 import "element-ui/lib/theme-chalk/display.css";
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
+import md5 from "js-md5";
 export default {
   data() {
     return {
@@ -50,10 +51,10 @@ export default {
   methods: {
     async login() {
       var phone = this.inputU;
-      var password = this.inputP;
-      // console.log(phone, password);
+      var password = md5(this.inputP);
+
       try {
-        let res = await this.$api.login(phone, password);
+        let res = await this.$api.loginMd5(phone, password);
         console.log(res.data);
         if (res.code == 200) {
           console.log(res);
