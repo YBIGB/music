@@ -6,7 +6,7 @@
         <form action method="post" class="loginForm">
           <el-row :gutter="20">
             <el-col :span="16" :offset="4">
-              <img src="../../../assets/images/logo-a.png" class="nicelogo" alt />
+              <img src="@/assets/images/logo-a.png" class="nicelogo" alt />
             </el-col>
           </el-row>
           <el-row :gutter="20">
@@ -32,11 +32,12 @@
         </form>
       </kinesis-element>
     </kinesis-container>
+    <el-button ref="message" :plain="true"></el-button>
   </div>
 </template>
 
 <script>
-import "../../../assets/3d/vanilla-tilt.min.js";
+import "@/assets/3d/vanilla-tilt.min.js";
 import "element-ui/lib/theme-chalk/display.css";
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import md5 from "js-md5";
@@ -55,14 +56,36 @@ export default {
 
       try {
         let res = await this.$api.loginMd5(phone, password);
-        console.log(res.data);
+        console.log(res);
         if (res.code == 200) {
-          console.log(res);
+          this.successLogin("登录成功", "success");
+          // window.location.href = "/found";
+          this.$router.replace("/found");
+          window.localStorage.setItem("cookie", res.cookie);
+          window.localStorage.setItem("token", res.token);
+          window.localStorage.setItem("loginStatu", true);
           this.loginStatus = res;
+          this.getUserDetail(res.profile.userId);
+        } else if (res.body.code == 502) {
+          this.successLogin("密码错误", "error");
+        } else if (res.body.code == 501) {
+          console.log(res.data.msg);
+          this.successLogin("账号不存在", "error");
+        } else {
+          console.log(res.data);
+          this.successLogin("用户名或密码错误", "error");
         }
       } catch (error) {
         console.log(error);
       }
+    },
+    successLogin(msg, type) {
+      console.log(this.$refs.message);
+      this.$refs.message.$message({
+        showClose: true,
+        message: msg,
+        type: type,
+      });
     },
   },
   components: {

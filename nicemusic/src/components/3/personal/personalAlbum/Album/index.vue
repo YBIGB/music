@@ -1,14 +1,13 @@
 <template>
-  
-    <div class="abCompo">
-      <img class="albumCover" src="../../../../../assets/images/zhou.jpg" alt />
-      <p class="albumName">歌单名称</p>
-      <span class="playCount">
-        <i class="el-icon-caret-right"></i>
-        <span class="number">999</span>
-      </span>
-    </div>
-  
+  <div class="abCompo">
+    <base href="/" />
+    <img class="albumCover" src="@/assets/images/zhou.jpg" alt />
+    <p class="albumName">歌单名称</p>
+    <span class="playCount">
+      <i class="el-icon-caret-right"></i>
+      <span class="number">999</span>
+    </span>
+  </div>
 </template>
 
 <script>

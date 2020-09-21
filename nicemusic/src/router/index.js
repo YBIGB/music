@@ -10,6 +10,7 @@ import singerDetails from '../views/testhu'
 import songs from '../components/3/singer/singerDetails/songs'
 import work from '../components/3/singer/singerDetails/work'
 import Personal from '../views/personal'
+import PlayList from '../components/4/playList'
 
 // 测试right left插件
 
@@ -55,6 +56,10 @@ var routes = [{
     {
         path: '/personal',
         component: Personal
+    },
+    {
+        path: '/playList',
+        component: PlayList
     },
     {
         path:'/singerDetails',

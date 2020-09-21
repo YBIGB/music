@@ -22,9 +22,6 @@
         <div class="box personalAlbum">
           <personal-album></personal-album>
           <personal-album></personal-album>
-          <personal-album></personal-album>
-          <personal-album></personal-album>
-          <personal-album></personal-album>
         </div>
       </div>
     </div>
