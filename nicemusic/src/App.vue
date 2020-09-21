@@ -1,6 +1,6 @@
 <template>
   <div style="position:relative;">
-    <headerBar v-if="isLogin" @showSearch="isSearch=!isSearch"></headerBar>
+    <headerBar v-if="!isLogin" @showSearch="isSearch=!isSearch"></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
     <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
@@ -19,7 +19,10 @@ import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
-import PlayerBar from './components/4/playerBar'
+import PlayerBar from './components/4/playerBar';
+import PlayList from './components/4/playList';
+
+
 export default {
   name: "home",
   components: {
@@ -28,22 +31,22 @@ export default {
     goTop,
     searchBox,
     PlayerBar,
+    PlayList,
   },
   data() {
     return {
-      isLogin: true,
+      isLogin: false,
       isSearch: false,
-      singers: [],
+      personalizeds: [],
     };
   },
   //  ---------------------------------------------------------------- ----------------------------------------------------------------
   methods: {
    async sss() {
       try {
-        let res = await this.$api.getHotSinger()
-        if (res.code === 200) {
-          this.singers = res.artists
-        }
+        let res = await this.$api.getPersonalized(24)
+        // console.log(res)
+        this.personalizeds = res.result
       } catch (error) {
         console.log(error)
       }

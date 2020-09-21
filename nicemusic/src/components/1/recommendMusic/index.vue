@@ -76,13 +76,14 @@
     data() {
       return {
         banners: [],
+        sleet:[]
       }
     },
     computed: {
 
     },
     methods: {
-
+      sheetList(){}
     },
     mounted() {
 
