@@ -82,10 +82,33 @@
 </template>
 
 <script>
+// import { mapGetters } from 'vuex'
+// import { createSong } from '@/model/song'
+// import { createVideo } from '@/model/video'
+// import ArtistList from 'components/common/artistList/Index'
+// import AlbumList from 'components/common/albumList/Index'
+// import MvList from 'components/common/mvList/Index'
+// import SingerItem from 'components/common/singerItem/Index'
   export default {
     name:'singer',
     data() {
       return {
+        // 歌手基本信息
+        singerDetail: {},
+        // 歌手用户信息
+        userDetail: {},
+        // 歌手简介
+        singerDesc: {},
+        // 热门单曲
+        songs: [],
+        // 专辑
+        albums: [],
+        // 相似歌手
+        singers: [],
+        // 歌手MV
+        mvs: [],
+        // 歌手id
+        singerId: '',
         //   背景图片
         imgBackground: {
             backgroundImage: "url(" + require("@/assets/images/top-bg1.jpg") + ")",
@@ -127,6 +150,143 @@
 
       }
     },
+    methods: {
+    // 获取歌手基本信息和热门50首单曲
+    async getArtists(id) {
+      try {
+        let res = await this.$api.getArtists(id)
+        if (res.code === 200) {
+          this.singerDetail = res.artist
+          this.getUserDetail(res.artist.accountId)
+        }
+        this.songs = this._normalizeSongs(res.hotSongs)
+        this.getArtistAlbum(id)
+        this.getArtistMv(id)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 获取(歌手)用户信息
+    async getUserDetail(uid) {
+      let detail = {}
+      try {
+        let res = await this.$api.getUserDetail(uid)
+        let profile = res.profile
+        if (res.code === 200) {
+          detail.level = res.level
+          detail.followeds = profile.followeds
+          detail.gender = profile.gender
+          this.userDetail = detail
+        }
+      } catch (error) {
+        detail.level = ''
+        detail.followeds = ''
+        detail.gender = ''
+        this.userDetail = detail
+      }
+    },
+    // 获取歌手专辑
+    async getArtistAlbum(id) {
+      let params = {
+        id: this.singerId || id,
+        limit: this.detail.albumSize,
+        offset: this.offset
+      }
+      try {
+        let res = await this.$api.getArtistAlbum(params)
+        if (res.code === 200) {
+          this.albums = res.hotAlbums
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 获取歌手MV
+    async getArtistMv(id) {
+      let params = {
+        id: this.singerId || id,
+        limit: this.detail.mvSize,
+        offset: this.offset
+      }
+      try {
+        let res = await this.$api.getArtistMv(params)
+        if (res.code === 200) {
+          this.mvs = this._normalizeVideos(res.mvs)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 获取歌手简介
+    async getArtistDesc(id) {
+      try {
+        let res = await this.$api.getArtistDesc(id)
+        if (res.code === 200) {
+          if (res.introduction.length > 0) {
+            res.introduction.map(item => {
+              item.txt = item.txt.replace(/(\r\n|\n|\r)/gm, '<br />')
+            })
+          }
+          this.singerDesc = res
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 获取相似歌手
+    async getArtistSimi(id) {
+      try {
+        let res = await this.$api.getArtistSimi(id)
+        if (res.code === 200) {
+          this.singers = res.artists
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 处理歌曲
+    _normalizeSongs(list) {
+      let ret = []
+      list.map(item => {
+        if (item.id) {
+          ret.push(createSong(item))
+        }
+      })
+      return ret
+    },
+    // 处理视频
+    _normalizeVideos(list) {
+      let ret = []
+      list.map(item => {
+        if (item.id) {
+          ret.push(
+            createVideo({
+              id: item.id,
+              nickName: item.artistName,
+              name: item.name,
+              playCount: item.playCount,
+              duration: item.duration,
+              image: item.imgurl16v9
+            })
+          )
+        }
+      })
+      return ret
+    },
+    //初始化
+    _initialize(id) {
+      this.active = 1
+      this.albumOffset = 0
+      this.mvOffset = 0
+      this.albums = []
+      this.mvs = []
+      this.singerId = Number(id)
+      this.getArtists(id)
+      this.getUserDetail(id)
+      this.getArtistDesc(id)
+      this.getArtistSimi(id)
+    }
+  },
   }
 </script>
 
