@@ -1,6 +1,6 @@
 <template>
   <div style="position:relative;">
-    <headerBar v-if="isLogin" @showSearch="isSearch=!isSearch"></headerBar>
+    <headerBar v-if="!isLogin" @showSearch="isSearch=!isSearch"></headerBar>
     <router-view></router-view>
     <footerBar v-if="isLogin"></footerBar>
     <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
@@ -34,19 +34,18 @@ export default {
   },
   data() {
     return {
-      isLogin: true,
+      isLogin: false,
       isSearch: false,
-      singers: [],
+      personalizeds: [],
     };
   },
   //  ---------------------------------------------------------------- ----------------------------------------------------------------
   methods: {
     async sss() {
       try {
-        let res = await this.$api.getHotSinger();
-        if (res.code === 200) {
-          this.singers = res.artists;
-        }
+        let res = await this.$api.getPersonalized(24);
+        // console.log(res)
+        this.personalizeds = res.result;
       } catch (error) {
         console.log(error);
       }
