@@ -179,7 +179,7 @@ export default {
         },
         search() {
             if (this.keyword.split(' ').join('').length !== 0) {
-                this.$router.replace('/playList');
+                this.$router.push('/playList');
                 var keyword = document.querySelector("#content").value;
                 localStorage.setItem('keyword', keyword);
                 document.querySelector(".frame").style.display = "none";

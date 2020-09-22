@@ -180,6 +180,12 @@ export const getMvAll = params => api.get(`/mv/all`, { params })
  */
 export const getVideoUrl = id => api.get(`/video/url?id=${id}`, {})
 
+
+/**
+ * @method 获取音乐播放地址
+ */
+export const getSongUrl = id => api.get(`/song/url?id=${id}`, {})
+
 /**
  * @method 获取视频详情
  */

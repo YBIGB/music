@@ -2,7 +2,8 @@
     <div>
         <banner></banner>
         <recommend-songs></recommend-songs>
-        <recommend-music></recommend-music>
+        <!-- 下面两个组件宽度有问题 -->
+        <recommend-music></recommend-music>   
         <recommend-singer></recommend-singer>
     </div>
 </template>

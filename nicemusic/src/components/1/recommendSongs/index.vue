@@ -28,6 +28,7 @@ export default {
     async getPersonalized() { 
       try {
         let res = await this.$api.getPersonalized(this.limit);
+
         this.personalizeds = res.result;
       } catch (error) {
         console.log(error);  

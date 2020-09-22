@@ -10,9 +10,10 @@
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
-    <audio controls>
-      <source :src="songUrl" type="audio/mpeg" />
-    </audio>
+    <!-- 播放 -->
+    <img src="@/assets/images/FBK.jpg" id="fbk" @click="getSongUrl" />
+    <audio :src="songUrl" id="player" style="display:none"></audio>
+    <!-- 播放 -->
   </div>
 </template>
 
@@ -38,14 +39,30 @@ export default {
     return {
       isLogin: false,
       isSearch: false,
-      personalizeds: [],
-      songUrl:'',
+      songUrl: "",
     };
   },
 
   methods: {
-    
+    //播放
+    async getSongUrl() {
+      try {
+        let res = await this.$api.getSongUrl("1409311773"); //歌曲ID
+        //console.log(res)
+        this.songUrl = res.data[0].url;
+        setTimeout(() => {
+          if (player.paused) {
+            player.play();
+          } else {
+            player.pause();
+          }
+        }, 1);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
+  mounted() {},
 };
 </script>
 
@@ -132,5 +149,13 @@ export default {
   100% {
     transform: translateY(0px);
   }
+}
+
+#fbk {
+  display: block;
+  width: 300px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 auto;
 }
 </style>
