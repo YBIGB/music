@@ -9,10 +9,8 @@
         </div>
       </el-col>
     </el-row>
-    
   </div>
 </template>
-
 <script>
 export default {
   name: "recommendSongs",
@@ -39,7 +37,6 @@ export default {
   },
 };
 </script>
-
 <style lang="less" scoped>
 div h4 {
   text-indent: 4vw;

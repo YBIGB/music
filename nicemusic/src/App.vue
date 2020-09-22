@@ -21,8 +21,6 @@ import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
 import PlayerBar from './components/4/playerBar';
 import PlayList from './components/4/playList';
-
-
 export default {
   name: "home",
   components: {

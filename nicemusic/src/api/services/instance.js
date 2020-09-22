@@ -50,7 +50,6 @@ instance.interceptors.response.use(response => {
   }
 }, error => {
 })
-
 let ajaxMethod = ['get', 'post']
 let api = {}
 ajaxMethod.forEach(method => {
