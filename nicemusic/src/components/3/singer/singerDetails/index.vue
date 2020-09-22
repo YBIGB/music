@@ -15,7 +15,7 @@
                               <i class="iconfont" :class="gender"></i>
                             </p> -->
                             <h2 style="color:white;display:inline-block">毛不易</h2>
-                            <i class="el-icon-male" style="color:blue;text-indent:10px;"></i>
+                            <i class="el-icon-male" :class="gender" style="color:blue;text-indent:10px;"></i>
                         </div>
                             <el-button class="addbtn" :style="btn2" round>
                                 <span class="add">+</span>&nbsp;&nbsp;关注TA</el-button> 
@@ -66,7 +66,7 @@
                         <router-link to="/singerDetails/work">歌手详情</router-link>
                     </li>
                     <li>
-                        <a>相似歌手</a>
+                        <router-link to="/singerDetails/similar">相似歌手</router-link>
                     </li>
                 </ul>
             </div>
@@ -170,14 +170,6 @@
           return ''
         }
       },
-      // 设置歌手等级
-      level() {
-        if (this.detail.level > 0) {
-          return 'nicelevel-' + this.detail.level
-        } else {
-          return ''
-        }
-      }
     },
     watch: {
       $route() {
@@ -222,38 +214,6 @@
         this.userDetail = detail
       }
     },
-    // 获取歌手专辑
-    async getArtistAlbum(id) {
-      let params = {
-        id: this.singerId || id,
-        limit: this.detail.albumSize,
-        offset: this.offset
-      }
-      try {
-        let res = await this.$api.getArtistAlbum(params)
-        if (res.code === 200) {
-          this.albums = res.hotAlbums
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    // 获取歌手MV
-    async getArtistMv(id) {
-      let params = {
-        id: this.singerId || id,
-        limit: this.detail.mvSize,
-        offset: this.offset
-      }
-      try {
-        let res = await this.$api.getArtistMv(params)
-        if (res.code === 200) {
-          this.mvs = this._normalizeVideos(res.mvs)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    },
     // 获取歌手简介
     async getArtistDesc(id) {
       try {
@@ -287,25 +247,6 @@
       list.map(item => {
         if (item.id) {
           ret.push(createSong(item))
-        }
-      })
-      return ret
-    },
-    // 处理视频
-    _normalizeVideos(list) {
-      let ret = []
-      list.map(item => {
-        if (item.id) {
-          ret.push(
-            createVideo({
-              id: item.id,
-              nickName: item.artistName,
-              name: item.name,
-              playCount: item.playCount,
-              duration: item.duration,
-              image: item.imgurl16v9
-            })
-          )
         }
       })
       return ret
