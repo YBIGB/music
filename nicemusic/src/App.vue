@@ -5,7 +5,7 @@
     <footerBar v-if="!isLogin"></footerBar>
     <goTop v-if="!isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
-    <player-bar></player-bar>
+    <player-bar v-if="isPlaying"></player-bar>
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
@@ -39,6 +39,7 @@ export default {
     return {
       isLogin: false,
       isSearch: false,
+      isPlaying:false,
       songUrl: "",
     };
   },
