@@ -26,17 +26,17 @@ Vue.config.productionTip = false
 // button阻止重复点击
 Vue.directive('preventReClick', {
     inserted(el, binding) {
-      el.addEventListener('click', () => {
-        if (!el.disabled) {
-          el.disabled = true
-          setTimeout(() => {
-            el.disabled = false
-          }, binding.value || 3000)
-        }
-      })
+        el.addEventListener('click', () => {
+            if (!el.disabled) {
+                el.disabled = true
+                setTimeout(() => {
+                    el.disabled = false
+                }, binding.value || 3000)
+            }
+        })
     }
-  })
-  
+})
+
 new Vue({
     render: h => h(App),
     router,

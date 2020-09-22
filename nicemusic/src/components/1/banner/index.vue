@@ -6,22 +6,23 @@
   </el-carousel>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        imagesbox: [
-          { id: 0, idView: require("../../../assets/images/personal.jpg") },
-          { id: 1, idView: require("../../../assets/images/personal.jpg") },
-          { id: 2, idView: require("../../../assets/images/personal.jpg") },
-          { id: 3, idView: require("../../../assets/images/personal.jpg") },
-        ],
-      };
-    },
-  };
+export default {
+  data() {
+    return {
+      imagesbox: [
+        { id: 0, idView: require("../../../assets/images/personal.jpg") },
+        { id: 1, idView: require("../../../assets/images/personal.jpg") },
+        { id: 2, idView: require("../../../assets/images/personal.jpg") },
+        { id: 3, idView: require("../../../assets/images/personal.jpg") },
+      ],
+    };
+  },
+};
 </script>
 <style>
-  .image {
-    height: 300px;
-    width: 760px;
-  }
+.image {
+  height: 300px;
+  width: 760px;
+  border-radius: 5px;
+}
 </style>

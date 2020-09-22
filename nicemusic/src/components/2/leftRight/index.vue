@@ -107,7 +107,6 @@ export default {
 
 <style scoped>
 
-
   * {
     padding: 0;
     margin: 0;
@@ -131,7 +130,7 @@ export default {
 }
 
 .parallax-img2 {
-    min-height: 400px;
+    min-height: 300px;
     background-image: url('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/5/thumb.jpg');
 }
 
@@ -223,8 +222,8 @@ h1 {
 }
 
 .wrap {
-    perspective: 400;
-    -moz-perspective: 400;
+   -perspective: 400;
+    /* -moz-perspective: 400; */
     float: left;
     width: 220px;
     margin-right: 20px;
@@ -235,8 +234,8 @@ h1 {
     height: 80px;
     transform-style: preserve-3d;
     transition: 1.5s;
-    -moz-transform-style: preserve-3d;
-    -moz-transition: 1.5s;
+    /* -moz-transform-style: preserve-3d;
+    -moz-transition: 1.5s; */
 }
 
 img {
@@ -245,26 +244,26 @@ img {
 }
 
 .wrap:hover .image {
-   transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+    /* -moz-transform: rotateY(180deg); */
 }
 
 .display {
     position: absolute;
     backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
+    /* -moz-backface-visibility: hidden; */
 }
 
 .display h3 {
-    color: white;
+    color: rgb(182, 35, 35);
     text-align: center;
 }
 
 .back {
    transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
-    background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726));
-    background: -moz-linear-gradient(top, #fdbb5a, #db5726);
+    /* background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726)); */
+    background: linear-gradient(top, #fdbb5a, #db5726);
     width: 220px;
     height: 200px;
     line-height: 200px;
