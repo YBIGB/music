@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="search">
-            <input type="text" placeholder="搜索音乐/MV/歌单/歌手" id="searchBox">
+            <input type="text" placeholder="搜索音乐/MV/歌单/歌手" id="searchBox" autocomplete="off">
+            <img src="./img/search-icon.png" alt="" id="searchIcon" @click="searchOnThisPage">
         </div>
         <div class="types">
             <span>搜索结果</span>
@@ -59,6 +60,15 @@
         border: 1px solid gray;
         outline: none;
         border-radius: 2px;
+    }
+
+    #searchIcon{
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: absolute;
+        top: 115px;
+        left: 1050px;
     }
 
     .types{
@@ -197,6 +207,10 @@ export default {
                     list[i].className = "even";
                 }
             }
+        },
+        searchOnThisPage:function(){
+            this.keyword = document.querySelector("#searchBox").value;
+            this.search(this.type);
         },
         search(type) {
          this.$api

@@ -3,7 +3,7 @@
     <transition appear>
         <div class="frame">
         <div class="bgc">
-            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="search" v-model="keyword">
+            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="search" v-model="keyword" autocomplete="off">
         </div>
         <div class="blank">
             <img src="./img/fire.png" alt="">
@@ -182,7 +182,6 @@ export default {
                 this.$router.replace('/playList');
                 var keyword = document.querySelector("#content").value;
                 localStorage.setItem('keyword', keyword);
-                document.querySelector(".frame").style.display = "none";
             }
         },
     },
