@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="search">
-            <input type="text" placeholder="搜索音乐/MV/歌单/歌手">
+            <input type="text" placeholder="搜索音乐/MV/歌单/歌手" id="searchBox" autocomplete="off">
+            <img src="./img/search-icon.png" alt="" id="searchIcon" @click="searchOnThisPage">
         </div>
         <div class="types">
             <span>搜索结果</span>
@@ -21,17 +22,17 @@
                  <tr  style="height: 50px" class="even">
                     <th style="width: 110px">序号</th>
                     <th style="width: 450px;text-align: left;text-indent: 20px">歌曲</th>
-                    <th style="width: 300px;text-align: left;text-indent: 20px">歌手</th>
-                    <th style="width: 180px;text-align: left;text-indent: 20px">专辑</th>
+                    <th style="width: 250px;text-align: left;text-indent: 20px">歌手</th>
+                    <th style="width: 230px;text-align: left;text-indent: 20px">专辑</th>
                     <th>时长</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in personalizeds" :key="item">
-                    <td>{{ item.id }}</td>
-                    <td><img :src="item.picUrl" alt=""><span>{{ item.name }}</span></td>
-                    <td>{{ item.copywriter }}</td>
-                    <td>{{ item.album }}</td>
+                <tr v-for="(item,index) in songs" :key="index">
+                    <td>{{ index }}</td>
+                    <td><img :src="item.artists[0].img1v1Url" alt=""><span>{{ item.name }}</span></td>
+                    <td>{{ item.artists[0].name }}</td>
+                    <td>{{ item.album.name }}</td>
                     <td>{{ item.time}}</td>
                 </tr>
             </tbody>
@@ -59,6 +60,15 @@
         border: 1px solid gray;
         outline: none;
         border-radius: 2px;
+    }
+
+    #searchIcon{
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: absolute;
+        top: 115px;
+        left: 1050px;
     }
 
     .types{
@@ -98,7 +108,7 @@
         height: 5px;
         background-color: wheat;
         position: absolute;
-        left: 265px;
+        left: 250px;
     }
 
     .types button{
@@ -162,35 +172,31 @@ export default {
     name: "playList",
     data:function(){
         return{
-            personalizeds: [],
-            limit:30
+            keyword: '',
+            searchResult: {},
+            limit: 30,
+            offset: 0,
+            type: 1,
+            isPerson: true,
+            songs: [],
+            loading: false,
         }
     },
     methods: {
-        async getPersonalized() {
-      try {
-        let res = await this.$api.getPersonalized(this.limit)
-        // console.log(res)
-        this.personalizeds = res.result
-      } catch (error) {
-        console.log(error)
-      }
-    }
-        ,
         go1: function(){
-            document.querySelector(".line").style.left="265px"
+            document.querySelector(".line").style.left="250px"
         },
         go2: function(){
-            document.querySelector(".line").style.left="325px"
+            document.querySelector(".line").style.left="310px"
         },
         go3: function(){
-            document.querySelector(".line").style.left="385px"
+            document.querySelector(".line").style.left="370px"
         },
         go4: function(){
-            document.querySelector(".line").style.left="445px"
+            document.querySelector(".line").style.left="430px"
         },
         go5: function(){
-            document.querySelector(".line").style.left="505px"
+            document.querySelector(".line").style.left="490px"
         },
         chartColor:function(){
             var list = document.querySelectorAll("tr");
@@ -202,13 +208,72 @@ export default {
                 }
             }
         },
+        searchOnThisPage:function(){
+            this.keyword = document.querySelector("#searchBox").value;
+            this.search(this.type);
+        },
+        search(type) {
+         this.$api
+        .search(this.keyword, this.limit, this.offset, this.type)
+        .then(res => {
+            if (res.code === 200) {
+                    // let lists = res.result.songs
+                    // let sliceArr = []
+                    // lists.map(item => {
+                    //     sliceArr.push(item.id)
+                    // })
+                    this.songs = res.result.songs;
+            // switch (type) {
+            //   case 1: {
+            //     let lists = res.result.songs
+            //     let sliceArr = []
+            //     lists.map(item => {
+            //       sliceArr.push(item.id)
+            //     })
+            //     this.getSongDetail(sliceArr)
+            //     break
+            //   }
+            //   case 100: {
+            //     this.singers = res.result.artists
+            //     break
+            //   }
+            //   case 10: {
+            //     this.albums = res.result.albums
+            //     break
+            //   }
+            //   case 1014: {
+            //     this.videos = this._normalizeVideos(res.result.videos)
+            //     break
+            //   }
+            //   case 1000: {
+            //     this.playList = res.result.playlists
+            //     break
+            //   }
+            //   default: {
+            //     let lists = res.result.songs
+            //     let sliceArr = []
+            //     lists.map(item => {
+            //       sliceArr.push(item.id)
+            //     })
+            //     this.getSongDetail(sliceArr)
+            //     break
+            //   }
+            // }
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     },
 
     updated(){
         this.chartColor();
     },
     mounted(){ 
-        this.getPersonalized();
+        this.keyword = localStorage.getItem('keyword');
+        document.querySelector("#searchBox").value = this.keyword;
+        this.search();
     }
 }
 </script>

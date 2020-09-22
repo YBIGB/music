@@ -263,7 +263,7 @@ img {
    transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     /* background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726)); */
-    background: linear-gradient(top, #fdbb5a, #db5726);
+    background: linear-gradient(to top, #fdbb5a, #db5726);
     width: 220px;
     height: 200px;
     line-height: 200px;
