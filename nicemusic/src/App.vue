@@ -1,16 +1,18 @@
 <template>
   <div style="position:relative;">
-    <headerBar v-if="!isLogin" @showSearch="isSearch=!isSearch"></headerBar>
+    <headerBar v-if="!isLogin" @showSearch="isSearch = !isSearch"></headerBar>
     <router-view></router-view>
-    <footerBar v-if="isLogin"></footerBar>
-    <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
+    <footerBar v-if="!isLogin"></footerBar>
+    <goTop v-if="!isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
-    <player-bar v-if="isLogin"></player-bar>
+    <player-bar></player-bar>
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
-    <button @click="sss">123</button>
+    <audio controls>
+      <source :src="songUrl" type="audio/mpeg" />
+    </audio>
   </div>
 </template>
 
@@ -19,9 +21,8 @@ import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
-import PlayerBar from './components/4/playerBar';
-import PlayList from './components/4/playList';
-
+import PlayerBar from "./components/4/playerBar";
+import PlayList from "./components/4/playList";
 
 export default {
   name: "home",
@@ -38,20 +39,12 @@ export default {
       isLogin: false,
       isSearch: false,
       personalizeds: [],
+      songUrl:'',
     };
   },
-  //  ---------------------------------------------------------------- ----------------------------------------------------------------
+
   methods: {
-   async sss() {
-      try {
-        let res = await this.$api.getPersonalized(24)
-        // console.log(res)
-        this.personalizeds = res.result
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    //  --------------------------------------------------------------- -----------------------------------------------------------------
+    sss() {},
   },
 };
 </script>
