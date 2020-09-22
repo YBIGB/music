@@ -10,6 +10,10 @@
                     <img :size="120" :src="circleUrl" class="circleStyle">
                     <div style="text-align:center;">
                         <div style="text-align:center">
+                          <!-- <p class="nickname">
+                              {{ detail.name }}
+                              <i class="iconfont" :class="gender"></i>
+                            </p> -->
                             <h2 style="color:white;display:inline-block">毛不易</h2>
                             <i class="el-icon-male" style="color:blue;text-indent:10px;"></i>
                         </div>
@@ -148,6 +152,39 @@
             margin:"10px",
         },
 
+      }
+    },
+    computed: {
+      // ...mapGetters(['singer']),
+      // 合并歌手详情
+      detail() {
+        return Object.assign(this.singerDetail, this.userDetail)
+      },
+      // 设置歌手性别
+      gender() {
+        if (this.detail.gender > 0) {
+          return this.detail.gender === 1
+            ? 'niceCRM_icon_nanxing man'
+            : 'niceCRM_icon_nvxing woman'
+        } else {
+          return ''
+        }
+      },
+      // 设置歌手等级
+      level() {
+        if (this.detail.level > 0) {
+          return 'nicelevel-' + this.detail.level
+        } else {
+          return ''
+        }
+      }
+    },
+    watch: {
+      $route() {
+        let id = this.$route.query.id || this.singer.id
+        if (id) {
+          this._initialize(id)
+        }
       }
     },
     methods: {
