@@ -6,15 +6,16 @@
       <span>单曲数：{{item.number}}</span>
     </ul> -->
     <el-row :gutter="20">
-      <router-link to="../../../singerDetails">
         <el-col :key='index' v-for='(item,index) in singerData' :span="4">
-        <div class="grid-content bg-purple" ><img :src="item.src" alt=""></div>
-        <p>{{item.name}}</p>
-        <span>单曲数：{{item.number}}</span>
-        <p class="empty"></p>
+        <router-link to="../../../singerDetails">
+          <div class="grid-content bg-purple" ><img :src="item.src" alt=""></div>
+          <p>{{item.name}}</p>
+          <span>单曲数：{{item.number}}</span>
+          <p class="empty"></p>
+        </router-link>
+        <router-view></router-view>
         </el-col>
-      </router-link>
-      <router-view></router-view>
+      
     </el-row>
   </div>
 </template>
