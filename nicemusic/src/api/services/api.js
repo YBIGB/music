@@ -17,24 +17,23 @@ export const getSearchHot = () => api.get('/search/hot', {})
  * @param {Number} type 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
  */
 export const search = (keywords, limit, offset, type) =>
-  api.get(
-    `/search?keywords=${keywords}&limit=${limit}&offset=${offset}&type=${type}`,
-    {}
-  )
+    api.get(
+        `/search?keywords=${keywords}&limit=${limit}&offset=${offset}&type=${type}`, {}
+    )
 
 /**
  * @method 搜索建议
  * @param {String} keywords 关键词
  */
 export const searchSuggest = keywords =>
-  api.get(`/search/suggest?keywords=${keywords}`, {})
+    api.get(`/search/suggest?keywords=${keywords}`, {})
 
 /**
  * @method 获取推荐歌单
  * @params limit 取出数量默认为 30
  */
 export const getPersonalized = limit =>
-  api.get(`/personalized?limit=${limit}`, {})
+    api.get(`/personalized?limit=${limit}`, {})
 
 /**
  * @method 获取推荐歌单
@@ -111,19 +110,19 @@ export const getPlayList = params => api.get(`/top/playlist`, { params })
  * @method 获取歌单详情
  */
 export const getPlayListDetail = (id, s, time) =>
-  api.get(`/playlist/detail?id=${id}&s=${s}&timestamp=${time}`, {})
+    api.get(`/playlist/detail?id=${id}&s=${s}&timestamp=${time}`, {})
 
 /**
  * @method 获取歌曲详情
  */
 export const getSongDetail = (ids, time) =>
-  api.post(`/song/detail?timestamp=${time}`, { ids })
+    api.post(`/song/detail?timestamp=${time}`, { ids })
 
 /**
  * @method 相关歌单推荐
  */
 export const getRelatedPlaylist = id =>
-  api.get(`/related/playlist?id=${id}`, {})
+    api.get(`/related/playlist?id=${id}`, {})
 
 /**
  * @method 获取相似歌单
@@ -138,7 +137,7 @@ export const getSimiPlaylist = id => api.get(`/simi/playlist?id=${id}`, {})
  * @params before 分页参数,取上一页最后一项的 time 获取下一页数据(获取超过5000条评论的时候需要用到)
  */
 export const getCommentPlaylist = params =>
-  api.get(`/comment/playlist`, { params })
+    api.get(`/comment/playlist`, { params })
 
 /**
  * @method 歌单收藏者
@@ -147,7 +146,7 @@ export const getCommentPlaylist = params =>
  * @params offset 偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值
  */
 export const getSubscribersPlaylist = params =>
-  api.get(`/playlist/subscribers`, { params })
+    api.get(`/playlist/subscribers`, { params })
 
 /**
  * @method 获取视频分类列表
@@ -163,13 +162,13 @@ export const getVideoTag = () => api.get(`/video/group/list`, {})
  * @method 获取全部视频列表
  */
 export const getVideoAll = offset =>
-  api.get(`/video/timeline/all?offset=${offset}`, {})
+    api.get(`/video/timeline/all?offset=${offset}`, {})
 
 /**
  * @method 获取视频标签/分类下的视频
  */
 export const getVideoOther = (id, offset) =>
-  api.get(`/video/group?id=${id}&offset=${offset}`, {})
+    api.get(`/video/group?id=${id}&offset=${offset}`, {})
 
 /**
  * @method 获取全部mv
@@ -190,7 +189,7 @@ export const getVideoDetail = id => api.get(`/video/detail?id=${id}`, {})
  * @method 获取视频点赞转发评论数数据
  */
 export const getVideoDetailInfo = (id, time) =>
-  api.get(`/video/detail/info?vid=${id}&timestamp=${time}`, {})
+    api.get(`/video/detail/info?vid=${id}&timestamp=${time}`, {})
 
 /**
  * @method 相关视频
@@ -233,7 +232,7 @@ export const likeComment = params => api.get(`/comment/like`, { params })
  */
 
 export const likeResource = (type, t, id) =>
-  api.get(`/resource/like?type=${type}&t=${t}&id=${id}`, {})
+    api.get(`/resource/like?type=${type}&t=${t}&id=${id}`, {})
 
 /**
  * @method 获取mv详情
@@ -244,7 +243,7 @@ export const getMvDetail = id => api.get(`/mv/detail?mvid=${id}`, {})
  * @method 获取mv点赞转发评论数数据
  */
 export const getMvDetailInfo = (id, time) =>
-  api.get(`/mv/detail/info?mvid=${id}&timestamp=${time}`, {})
+    api.get(`/mv/detail/info?mvid=${id}&timestamp=${time}`, {})
 
 /**
  * @method 获取mv播放地址
@@ -271,7 +270,7 @@ export const getLyric = id => api.get(`/lyric?id=${id}`, {})
  * @method 收藏/取消收藏歌单
  */
 export const collectPlaylist = (t, id) =>
-  api.get(`/playlist/subscribe?t=${t}&id=${id}`, {})
+    api.get(`/playlist/subscribe?t=${t}&id=${id}`, {})
 
 /**
  * @method 获取专辑内容

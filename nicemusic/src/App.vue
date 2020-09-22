@@ -19,8 +19,9 @@ import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
-import PlayerBar from './components/4/playerBar';
-import PlayList from './components/4/playList';
+import PlayerBar from "./components/4/playerBar";
+import PlayList from "./components/4/playList";
+
 export default {
   name: "home",
   components: {
@@ -40,13 +41,13 @@ export default {
   },
   //  ---------------------------------------------------------------- ----------------------------------------------------------------
   methods: {
-   async sss() {
+    async sss() {
       try {
-        let res = await this.$api.getPersonalized(24)
+        let res = await this.$api.getPersonalized(24);
         // console.log(res)
-        this.personalizeds = res.result
+        this.personalizeds = res.result;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
     //  --------------------------------------------------------------- -----------------------------------------------------------------
