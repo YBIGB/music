@@ -57,8 +57,8 @@ export default {
 </script>
 <style>
 .image {
-  height: 300px;
-  width: 760px;
+  height: 20vw;
+  width: 48vw;
   border-radius: 5px;
 }
 </style>
