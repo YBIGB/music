@@ -14,14 +14,18 @@
       </el-row>-->
       <div class="main">
         <div class="box personalDetail">
-          <personal-detail></personal-detail>
+          <personal-detail :level="level" :userInfo="personalDetails"></personal-detail>
         </div>
         <div class="box personalSongs">
-          <personal-songs></personal-songs>
+          <personal-songs :listenSongs="listenSongs" :userInfo="personalDetails"></personal-songs>
         </div>
         <div class="box personalAlbum">
-          <personal-album></personal-album>
-          <personal-album></personal-album>
+          <personal-album :playlist="personalList">
+            <span slot>我创建的歌单</span>
+          </personal-album>
+          <personal-album :playlist="favList">
+            <span slot>我收藏的歌单</span>
+          </personal-album>
         </div>
       </div>
     </div>
@@ -42,37 +46,48 @@ export default {
   },
   data() {
     return {
+      level: "",
+      listenSongs: 0,
       personalDetails: {},
+      personalList: [],
+      favList: [],
     };
   },
   methods: {
-    async getP() {
-      var uid = 1005;
+    getDetail(uid) {
       try {
-        let res = await this.$api.getUserDetail(uid);
-        console.log(res.data);
-        if (res.code == 200) {
-          console.log(res);
-          this.loginStatus = res;
-        }
-      } catch (error) {
-        console.log(error);
+        let res = this.$api.getUserDetail(uid);
+        console.log("personal", res);
+      } catch (err) {
+        console.log(err);
       }
     },
   },
   mounted() {
-    var id = 347230;
-    var timestamp = +new Date();
-    try {
-      let res = this.$api.getSongDetail(id, timestamp);
-      console.log(res.data);
-      if (res.code == 200) {
-        console.log(res);
-        this.personalDetails = res;
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    const userId = window.localStorage.getItem("userId");
+    console.log(userId);
+
+    this.$api
+      .getUserDetail(userId)
+      .then((res) => {
+        console.log("res", res.level);
+        this.level = res.level;
+        this.listenSongs = res.listenSongs;
+        this.personalDetails = res.profile;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.$api
+      .getUserArtist(userId)
+      .then((res) => {
+        console.log("resalbum", res);
+        this.personalList = res.playlist.filter((item) => !item.subscribed);
+        this.favList = res.playlist.filter((item) => item.subscribed);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

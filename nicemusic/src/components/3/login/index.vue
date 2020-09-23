@@ -32,7 +32,7 @@
         </form>
       </kinesis-element>
     </kinesis-container>
-    <el-button ref="message" :plain="true"></el-button>
+    <el-button ref="message" :plain="true" style="visibility:none"></el-button>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
     return {
       inputU: "",
       inputP: "",
-      loginStatus: {},
+      loginStatus: window.localStorage.getItem("loginStatus") || false,
     };
   },
   methods: {
@@ -66,6 +66,7 @@ export default {
           window.localStorage.setItem("loginStatu", true);
           this.loginStatus = res;
           this.getUserDetail(res.profile.userId);
+          window.localStorage.setItem("userId", res.profile.userId);
         } else if (res.body.code == 502) {
           this.successLogin("密码错误", "error");
         } else if (res.body.code == 501) {
@@ -86,6 +87,14 @@ export default {
         message: msg,
         type: type,
       });
+    },
+    async getUserDetail(uid) {
+      try {
+        let res = await this.$api.getUserDetail(uid);
+        console.log("personal", res);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
   components: {
