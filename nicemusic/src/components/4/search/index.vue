@@ -1,15 +1,14 @@
 <template>
 <div class="pic">
-    
     <transition appear>
         <div class="frame">
         <div class="bgc">
-            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="showHistoryAndGo">
+            <input type="text" id="content" placeholder="请输入搜索关键词并按回车键..." @keyup.enter="search" v-model="keyword" autocomplete="off">
         </div>
         <div class="blank">
             <img src="./img/fire.png" alt="">
             <p>热门搜索</p>
-            <span v-for="item in hots" :key="item">{{ item.first }}</span>
+            <span v-for="(item,index) in hots" :key="index">{{ item.first }}</span>
             <br>
             <br>
             <div class="history">
@@ -18,7 +17,7 @@
             </div>
         </div>
         <div class="closeButton" @click="closeButton">
-            <i class="el-icon-circle-close " ></i>
+            <i class="el-icon-circle-close" ></i>
         </div>
     </div>
     </transition>
@@ -158,6 +157,8 @@ export default {
     data: function(){
         return{
             hots: [],
+            isShow: false,
+            keyword: '',
         }
     },
     methods: {
@@ -174,27 +175,19 @@ export default {
     },
         //------------------------------------------------------------------------------------
         closeButton:function(){
-            document.querySelector(".frame").style.display = "none";
+            this.isShow = false
         },
-        showHistoryAndGo:function(){
-            //显示历史搜索记录
-            document.querySelector(".history").style.display="block";
-            var a = document.querySelector(".blank");
-            a.style.height = 210 + "px";
-            //添加新span节点
-            var b = document.querySelector(".history");
-            var newNode = document.createElement("span");
-            newNode.classaName="change";
-            b.appendChild(newNode);
-            //获取输入框value
-            var i = document.querySelector("#content").value;
-            document.querySelector(".history").lastElementChild.innerHTML= i;
-            this.$router.replace('/playList');
-            document.querySelector(".frame").style.display = "none";
-        }
+        search() {
+            if (this.keyword.split(' ').join('').length !== 0) {
+                this.$router.push('/playList');
+                var keyword = document.querySelector("#content").value;
+                localStorage.setItem('keyword', keyword);
+            }
+        },
     },
     mounted() {
-    this.getSearchHot();
+        this.getSearchHot();
+        localStorage.removeItem('keyword');
   }
 }
 </script>

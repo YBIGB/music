@@ -9,6 +9,7 @@ import Login from '../views/login';
 import singerDetails from '../views/testhu'
 import songs from '../components/3/singer/singerDetails/songs'
 import work from '../components/3/singer/singerDetails/work'
+import similar from '../components/3/singer/singerDetails/similar'
 import Personal from '../views/personal'
 import PlayList from '../components/4/playList'
 
@@ -76,7 +77,11 @@ var routes = [{
             {
                 path:'work',
                 component:work,
-            }
+            },
+            {
+                path:'similar',
+                component:similar,
+            },
         ]
     }
     

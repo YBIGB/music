@@ -1,16 +1,19 @@
 <template>
   <div style="position:relative;">
-    <headerBar v-if="!isLogin" @showSearch="isSearch=!isSearch"></headerBar>
+    <headerBar v-if="!isLogin" @showSearch="isSearch = !isSearch"></headerBar>
     <router-view></router-view>
-    <footerBar v-if="isLogin"></footerBar>
-    <goTop v-if="isLogin" style="position:fixed;bottom:200px"></goTop>
+    <footerBar v-if="!isLogin"></footerBar>
+    <goTop v-if="!isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
-    <player-bar v-if="isLogin"></player-bar>
+    <player-bar v-if="isPlaying"></player-bar>
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
-    <button @click="sss">123</button>
+    <!-- 播放 -->
+    <img src="@/assets/images/FBK.jpg" id="fbk" @click="getSongUrl" />
+    <audio :src="songUrl" id="player" style="display:none"></audio>
+    <!-- 播放 -->
   </div>
 </template>
 
@@ -36,22 +39,31 @@ export default {
     return {
       isLogin: false,
       isSearch: false,
-      personalizeds: [],
+      isPlaying:false,
+      songUrl: "",
     };
   },
-  //  ---------------------------------------------------------------- ----------------------------------------------------------------
+
   methods: {
-    async sss() {
+    //播放
+    async getSongUrl() {
       try {
-        let res = await this.$api.getPersonalized(24);
-        // console.log(res)
-        this.personalizeds = res.result;
+        let res = await this.$api.getSongUrl("1409311773"); //歌曲ID
+        //console.log(res)
+        this.songUrl = res.data[0].url;
+        setTimeout(() => {
+          if (player.paused) {
+            player.play();
+          } else {
+            player.pause();
+          }
+        }, 1);
       } catch (error) {
         console.log(error);
       }
     },
-    //  --------------------------------------------------------------- -----------------------------------------------------------------
   },
+  mounted() {},
 };
 </script>
 
@@ -138,5 +150,13 @@ export default {
   100% {
     transform: translateY(0px);
   }
+}
+
+#fbk {
+  display: block;
+  width: 300px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 auto;
 }
 </style>

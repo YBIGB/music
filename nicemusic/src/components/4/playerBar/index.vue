@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-show="playing">
+  <div id="app">
     <el-row>
       <el-col :span="4" id="col1">
         <img
@@ -83,7 +83,6 @@ export default {
     return {
       pp: false,
       word:false,
-      playing:false,
       time: 0,
       voice: 0,
       mode: 1,
