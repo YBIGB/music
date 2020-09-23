@@ -1,7 +1,8 @@
 <template>
   <div class="recommend-music">
-    <h2 class="title">推荐新歌曲</h2>
+    <h4 class="title">推荐新歌曲</h4>
     <song-list :songList="songs"></song-list>
+    <h4>推荐歌手</h4>
   </div>
 </template>
 <script>
@@ -67,7 +68,10 @@
     }
   }
 </script>
-<style scoped>
+<style lang="less" scoped>
+div h4 {
+  text-indent: 4vw;
+}
   .recommend-music .title {
       margin: 0 0 15px 0;
     }
