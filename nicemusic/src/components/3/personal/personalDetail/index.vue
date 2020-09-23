@@ -1,16 +1,19 @@
 <template>
   <div class="detail">
-    <div class="detailBg"></div>
+    <div
+      class="detailBg"
+      :style="{backgroundImage: 'url(' + (userInfo.backgroundUrl)  + ')', backgroundSize:'cover'}"
+    ></div>
     <div class="topDetail">
-      <img src="../../../../assets/images/zhou.jpg" alt class="avatar" />
-      <span class="uname">用户xxxxx</span>
+      <img :src="userInfo.avatarUrl" alt class="avatar" />
+      <span class="uname">{{userInfo.nickname}}</span>
       <el-button size="mini" class="checkBtn" type="danger" round>签到</el-button>
     </div>
     <div>
       <ul class="infoUl">
         <li class="level">
           <span class="reddot"></span> 等级：
-          <span></span>
+          <span v-text="level"></span>
         </li>
         <li class="age">
           <span class="reddot"></span> 年龄：
@@ -28,19 +31,19 @@
           <div>
             <span>动态</span>
           </div>
-          <span>1</span>
+          <span v-text="userInfo.eventCount">1</span>
         </li>
         <li>
           <div>
             <span>关注</span>
           </div>
-          <span>1</span>
+          <span v-text="userInfo.follows">1</span>
         </li>
         <li>
           <div>
             <span>粉丝</span>
           </div>
-          <span>1</span>
+          <span v-text="userInfo.followeds">1</span>
         </li>
       </ul>
     </div>
@@ -54,6 +57,8 @@
 <script>
 export default {
   name: "personalDetail",
+  props: ["level", "userInfo"],
+  mounted() {},
 };
 </script>
 

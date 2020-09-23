@@ -1,11 +1,15 @@
 <template>
   <div class="abCompo">
     <base href="/" />
-    <img class="albumCover" src="@/assets/images/zhou.jpg" alt />
-    <p class="albumName">歌单名称</p>
+    <div class="albumImg">
+      <img class="albumCover" :src="album.coverImgUrl" alt />
+    </div>
+    <p class="albumName">{{album.name}}</p>
     <span class="playCount">
       <i class="el-icon-caret-right"></i>
-      <span class="number">999</span>
+      <span
+        class="number"
+      >{{album.playCount>100000000?Math.floor(album.playCount/100000000)+'亿':(album.playCount>10000?Math.floor(album.playCount/10000)+'万':album.playCount)}}</span>
     </span>
   </div>
 </template>
@@ -13,6 +17,7 @@
 <script>
 export default {
   name: "Album",
+  props: ["album"],
 };
 </script>
 
@@ -24,10 +29,16 @@ export default {
 .abCompo {
   position: relative;
   width: 120px;
+  /* height: 150px; */
   float: left;
   margin: 5px;
 }
+.albumImg {
+  width: 120px;
+  height: 120px;
+}
 .albumCover {
+  vertical-align: middle;
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -35,7 +46,7 @@ export default {
 .playCount {
   display: inline-block;
   background: url("../../../../../assets/images/totalPlay.png") no-repeat;
-  width: 50px;
+  width: 70px;
   height: 30px;
   position: absolute;
   right: 3px;
@@ -43,6 +54,7 @@ export default {
   /* background-size: 100% 100%; */
   background-size: cover;
   transform: scale(0.8);
+  text-align: center;
   font-weight: bold;
 }
 .el-icon-caret-right {
@@ -52,6 +64,7 @@ export default {
 .number {
   color: #eee;
   font-size: 12px;
+  transform: scale(0.8);
   line-height: 30px;
 }
 .albumName {
