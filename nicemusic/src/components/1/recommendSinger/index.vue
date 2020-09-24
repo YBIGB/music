@@ -6,9 +6,9 @@
       <span>单曲数：{{item.number}}</span>
     </ul> -->
     <el-row :gutter="20">
-        <el-col :key='index' v-for='(item,index) in singers' :span="4">
-        <router-link to="../../../singerDetails">
-          <div class="grid-content bg-purple" ><img :src="item.picUrl" lazy alt=""></div>
+        <el-col :key='index' v-for='(item,index) in singers' :span="4"  >
+        <router-link to="../../../singerDetails" >
+          <div class="grid-content bg-purple" ><img :src="item.picUrl" lazy alt="" ></div>
           <p>{{item.name}}</p>
           <span>单曲数：{{item.musicSize}}</span>
           <p class="empty"></p>
@@ -29,6 +29,10 @@
       }
     },
     methods:{
+      setsingerID(index){
+        localStorage.setItem('singerID',singer[index])
+      },
+
       async getHotSinger() { 
       try {
         let res = await this.$api.getHotSinger();
@@ -37,9 +41,11 @@
         console.log(error);  
       }
     },
+    
     },
     mounted() {
     this.getHotSinger();
+    
   }
   }
 </script>

@@ -86,7 +86,7 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 // import { createSong } from '@/model/song'
 // import { createVideo } from '@/model/video'
 // import ArtistList from 'components/common/artistList/Index'
@@ -155,8 +155,8 @@
       }
     },
     computed: {
-      // ...mapGetters(['singer']),
-      // 合并歌手详情
+      ...mapGetters(['singer']),
+      //合并歌手详情
       detail() {
         return Object.assign(this.singerDetail, this.userDetail)
       },
