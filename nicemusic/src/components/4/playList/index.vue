@@ -183,9 +183,9 @@ export default {
         console.log('此歌曲URL',resUrl.data[0].url);
         this.$store.commit('changeUrl',resUrl.data[0].url) ;//将当前URL传入store
 
-        let resdata = await this.$api.getSongDetail(theID); //获取歌曲data
-        console.log('此歌曲歌手',resdata.songs[0].ar[0].name);
-        this.$store.commit("changeData", resdata.songs[0]); //将当前歌曲data传入store
+        // let resdata = await this.$api.getSongDetail(theID); //获取歌曲data
+        // console.log('此歌曲歌手',resdata.songs[0].ar[0].name);
+        // this.$store.commit("changeData", resdata.songs[0]); //将当前歌曲data传入store
       } catch (error) {
         console.log(error);
       }
@@ -206,8 +206,7 @@ export default {
       this.search(this.type);
     },
     search(type) {
-      this.$api
-        .search(this.keyword, this.limit, this.offset, this.type)
+      this.$api.search(this.keyword, this.limit, this.offset, this.type)
         .then((res) => {
           if (res.code === 200) {
             // let lists = res.result.songs
@@ -215,6 +214,7 @@ export default {
             // lists.map(item => {
             //     sliceArr.push(item.id)
             // })
+            console.log("hello",res)
             this.songs = res.result.songs;
             // switch (type) {
             //   case 1: {
