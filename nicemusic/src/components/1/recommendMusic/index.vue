@@ -1,70 +1,78 @@
 <template>
   <div class="recommend-music">
-    <h4 class="title">推荐新歌曲</h4>
-    <song-list :songList="songs"></song-list>
+<!--    <song-list :songList="songs"></song-list>-->
+    <div class="news">
+      <h4 class="title">
+        推荐歌曲
+      </h4>
+      <div class="items">
+        <div class="item" v-for="(item, index) in songs" :key="index">
+          <div class="img-wrap">
+            <!-- 封面 -->
+            <img :src="item.picUrl" alt="" />
+<!--            <span  class="iconfont icon-play"></span>-->
+          </div>
+          <div class="song-wrap ellipsis">
+            <!-- 歌名 -->
+            <div class="song-name ellipsis">{{ item.name }}</div>
+            <!-- 歌手名 -->
+            <div class="singer ellipsis">{{ item.song.artists[0].name }}</div>
+            <div @click="playMusic(item.id)" class="playicon"><img src="../../../assets/images/cd.png"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    <audio :src='murl' controls autoplay></audio>-->
+
     <h4>推荐歌手</h4>
   </div>
 </template>
 <script>
-  import songList from '../../../views/Ftest/songList/Index'
-  // import { createSong } from '../../../views/Ftest/song'
+  import axios from 'axios'
   export default {
     data() {
       return {
-        songs: []
+        songs: [],
+        url: []
       }
     },
     components: {
-      songList
+
     },
     //监听属性 类似于data概念
     computed: {},
     //监控data中的数据变化
     watch: {},
-    //方法集合
+    created() {
+      axios({
+        url: 'https://autumnfish.cn/personalized/newsong',
+        method: 'get'
+      }).then(res => {
+        // console.log(res)
+        this.songs = res.data.result
+      })
+    },
     methods: {
-      // 获取推荐新音乐
-      async getNewSongs() {
-        try {
-          let res = await this.$api.getNewSongs()
-          let list = []
-          if(res.code === 200) {
-            res.result.map(item => {
-              list.push(item.id)
-            })
-            this.getSongDetail(list)
+      playMusic(id) {
+        // console.log(id)
+        axios({
+          url: 'https://autumnfish.cn/song/url',
+          method: 'get',
+          params: {
+            id // id:id
           }
-        } catch (error) {
-          console.log(error)
-        }
-      },
-      // 获取歌曲列表
-      async getSongDetail(sliceArr) {
-        let timestamp = new Date().valueOf()
-        sliceArr = sliceArr.join(',')
-        try {
-          let res = await this.$api.getSongDetail(sliceArr, timestamp)
-          this.songs = this._normalizeSongs(res.songs)
-          console.log(this.songs)
-        } catch (error) {
-        }
-      },
-      // 处理歌曲
-      _normalizeSongs(list) {
-        let ret = []
-        list.map(item => {
-          if (item.id) {
-            ret.push(createSong(item))
-          }
+        }).then(res => {
+          // console.log(res)
+          let url = res.data.data[0].url
+          // 设置给父组件的 播放地址
+          this.$parent.musicUrl = url
+          // console.log(this.$parent.musicUrl)
+
+          // console.log(url)
         })
-        return ret
       }
     },
-    //生命周期 - 创建完成（可以访问当前this实例）
-    created() {},
-    //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {
-      this.getNewSongs()
     }
   }
 </script>
@@ -75,6 +83,63 @@ div h4 {
   .recommend-music .title {
       margin: 0 0 15px 0;
     }
+ .items {
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: 6vw;
+   margin-bottom: 4vw;
+ }
+ .item {
+   flex: 0 0 43%;
+   display: flex;
+   width: 43%;
+   align-items: center;
+   margin-bottom: 2vw;
+   margin-right: 3vw;
+   padding: 0.8vw;
+   /*background-color: #F9F9F9;*/
+   background-color: #F8F8F8;
+   border-radius: 5px;
+ }
+ .item:hover {
+   background-color: #F0F1F1;
+ }
+  .img-wrap img {
+    width: 5vw;
+    height: 5vw;
+    margin-left: 1vw;
+  }
+  .song-wrap {
+    /*border: 1px black solid;*/
+    width: 75%;
+    height: 50%;
+    margin-left: 2vw;
+    text-overflow: ellipsis;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .song-wrap .song-name{
+    /*border: 1px black solid;*/
+    width: 60%;
+    padding: 0.5vw;
+    padding-left: 1vw;
+    margin-right: 1vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .song-wrap .singer {
+    /*border: 1px black solid;*/
+    padding: 0.5vw;
+    margin-left: 1vw;
+    width: 50%;
+    margin-right: 7vw;
+  }
+.playicon img{
+  width: 3vw;
+  height: 3vw;
+}
 </style>
 
 

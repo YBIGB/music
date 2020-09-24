@@ -46,7 +46,7 @@ div h4 {
 }
 .single-content{
   width: 10vw;
-  height: 20vw;
+  height: 18vw;
   margin-left: 1.8vw;
 }
 .single-content img{
