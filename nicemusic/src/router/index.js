@@ -64,6 +64,7 @@ var routes = [{
     },
     {
         path:'/singerDetails',
+        name:'singerDetails',
         component:singerDetails,
         children:[
             {
