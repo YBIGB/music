@@ -1,101 +1,72 @@
 <template>
   <div id="app">
+    <audio :src="currentUrl" controls></audio>
+
     <el-row>
-      <el-col :span="4" id="col1">
-        <img
-          src=""
-          alt="歌曲封面"
-          title="歌曲封面"
-          class="cover"
-        />
+      <el-col :span="4">
+        <img src="" alt="歌曲封面" title="歌曲封面" class="cover" />
         <span id="songname">薛定谔的猫</span>
         <span id="singer">薛定谔</span>
       </el-col>
 
-      <el-col :span="4" style="font-size:40px" id="col2">
+      <el-col :span="4">
         <i class="el-icon-caret-left"></i>
         <i class="el-icon-video-pause" v-show="pp"></i>
         <i class="el-icon-video-play" v-show="!pp"></i>
         <i class="el-icon-caret-right"></i>
       </el-col>
 
-      <el-col :span="5" id="col3">
-        <div class="block">
-          <span>1</span>
-          <el-slider v-model="time" :show-tooltip="false"></el-slider>
-          <span>10</span>
-        </div>
+      <el-col :span="1">
+        <span>1</span>
+      </el-col>
+      <el-col :span="3">
+        <el-slider v-model="time" :show-tooltip="false" />
       </el-col>
 
-      <el-col :span="5" id="col4">
-        <div class="block">
-          <img
-            src="../../../assets/images/音量.png"
-            alt=""
-            style="height:20px"
-          />
-          <el-slider v-model="voice" :show-tooltip="false"></el-slider>
-        </div>
+      <el-col :span="1">
+        <span>10</span>
       </el-col>
 
-      <el-col :span="4" id="col5">
-        <div class="block">
-          <img
-            src="../../../assets/images/列表循环.png"
-            alt=""
-            style="height:20px"
-            v-if="mode == 1"
-          />
-          <img
-            src="../../../assets/images/单曲循环.png"
-            alt=""
-            style="height:20px"
-            v-else-if="mode == 2"
-          />
-          <img
-            src="../../../assets/images/随机播放.png"
-            alt=""
-            style="height:20px"
-            v-else
-          />
+      <el-col :span="1">
+        <img src="../../../assets/images/音量.png" alt="" style="height:20px" />
+      </el-col>
 
-          <img
-            src="../../../assets/images/歌词未点击.png"
-            alt=""
-            style="height:20px"
-          />
-          <img
-            src="../../../assets/images/歌单.png"
-            alt=""
-            style="height:20px"
-          />
-        </div>
+      <el-col :span="4">
+        <el-slider v-model="voice" :show-tooltip="false" />
+      </el-col>
+
+      <el-col :span="4">
+        <img src="../../../assets/images/列表循环.png" v-if="mode == 1" />
+        <img src="../../../assets/images/单曲循环.png" v-else-if="mode == 2" />
+        <img src="../../../assets/images/随机播放.png" v-else />
+        <img src="../../../assets/images/歌词未点击.png" />
+        <img src="../../../assets/images/歌单.png" alt="" style="height:20px" />
       </el-col>
       <div id="word" v-show="word">1232132131232</div>
-      
     </el-row>
-
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       pp: false,
-      word:false,
+      word: false,
       time: 0,
       voice: 0,
       mode: 1,
     };
   },
   methods: {},
+  computed: mapState(["currentUrl"]),
 };
 </script>
 <style lang="less" scoped>
 #app {
   position: relative;
   z-index: 999;
-  height: 100px;
+  height: 50px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -116,60 +87,40 @@ export default {
   .cover {
     margin: 10px 0 0 10px;
   }
-  #songname{
-    position: absolute;
-    top: 30px;
-    left: 120px;
+  #songname {
   }
- #singer{
-    position: absolute;
-    top: 60px;
-    left: 120px;
- }
-}
-
-#col2{
-  position: relative;
-  i{
-    position: relative;
-    top: 20px;
-    cursor: pointer;
+  #singer {
   }
 }
 
-#col3{
+#col2 {
   position: relative;
-  .block{
-    position: relative;
-    top: 10px;
-    div{
-      display: inline-block;
-      width: 200px;
-      margin: 0 10px;
+  i {
+  }
+}
+
+#col3 {
+  position: relative;
+  .block {
+    div {
     }
-    span{
-     position: relative;
-      left:100px;
+    span {
     }
   }
 }
 
-#col4{
-  img{
-    position: relative;
-    left: 85px;
-    top: 63px;
+#col4 {
+  img {
   }
 }
 
-#col5{
-  img{
-    margin: 30px 20px 0 20px;
+#col5 {
+  img {
   }
 }
 
-#word{
-  width:500px;
+#word {
+  width: 500px;
   height: 600px;
   background-color: white;
   position: absolute;

@@ -11,7 +11,7 @@
       router
     >
       <img
-        src="../../../assets/images/logo_black.png"
+        src="@/assets/images/logo_black.png"
         alt="search"
         class="logo"
       />

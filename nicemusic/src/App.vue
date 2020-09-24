@@ -5,14 +5,14 @@
     <footerBar v-if="!isLogin"></footerBar>
     <goTop v-if="!isLogin" style="position:fixed;bottom:200px"></goTop>
     <searchBox id="searchBox" v-if="isSearch"></searchBox>
-    <player-bar v-if="isPlaying"></player-bar>
+    <player-bar></player-bar>
+
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
     <div class="fly bg-fly-circle4"></div>
     <!-- 播放 -->
-    <img src="@/assets/images/FBK.jpg" id="fbk" @click="getSongUrl" />
-    <audio :src="songUrl" id="player" style="display:none"></audio>
+
     <!-- 播放 -->
   </div>
 </template>
@@ -22,7 +22,7 @@ import headerBar from "./components/4/headerBar";
 import footerBar from "./components/4/footerBar";
 import goTop from "./components/2/goTop";
 import searchBox from "./components/4/search";
-import PlayerBar from "./components/4/playerBar";
+import playerBar from "./components/4/playerBar";
 import PlayList from "./components/4/playList";
 
 export default {
@@ -32,37 +32,19 @@ export default {
     footerBar,
     goTop,
     searchBox,
-    PlayerBar,
+    playerBar,
     PlayList,
   },
   data() {
     return {
       isLogin: false,
       isSearch: false,
-      isPlaying:false,
-      songUrl: "",
     };
   },
 
-  methods: {
-    //播放
-    async getSongUrl() {
-      try {
-        let res = await this.$api.getSongUrl("1409311773"); //歌曲ID
-        //console.log(res)
-        this.songUrl = res.data[0].url;
-        setTimeout(() => {
-          if (player.paused) {
-            player.play();
-          } else {
-            player.pause();
-          }
-        }, 1);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
+  methods: {},
+  
+
   mounted() {},
 };
 </script>
