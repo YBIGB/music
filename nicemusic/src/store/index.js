@@ -6,18 +6,20 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 
     state: {
-        currentUrl:'',
+        currentUrl: '',
+        currentData: '',
 
-        currentId:'',
-        urlList:'',
-        isPlaying:false,
+        isPlaying: false,
     },
 
     mutations: {
-        changeUrl(state,val){
-           state.currentUrl =  val
-           state.isPlaying = true
+        changeUrl(state, val) {
+            state.currentUrl = val
+            state.isPlaying = true
         },
+        changeData(state, val) {
+            state.currentData = val
+        }
     },
 
     actions: {

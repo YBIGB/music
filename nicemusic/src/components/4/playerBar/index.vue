@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <audio :src="currentUrl" controls></audio>
+  <div id="app" v-show="ifshow">
+    <audio :src="currentUrl" id="player"></audio>
 
     <el-row>
       <el-col :span="4">
-        <img src="" alt="歌曲封面" title="歌曲封面" class="cover" />
-        <span id="songname">薛定谔的猫</span>
-        <span id="singer">薛定谔</span>
+        <img :src="songcover" alt="歌曲封面" title="歌曲封面" class="cover" />
+        <span id="songname">{{ currentData.name }}</span>
+        <span id="singer">{{}}</span>
       </el-col>
 
       <el-col :span="4">
@@ -56,10 +56,37 @@ export default {
       time: 0,
       voice: 0,
       mode: 1,
+
+      ifshow:false,
+      songcover:'',
+      songname:'',
+      songsinger:'',
     };
   },
   methods: {},
-  computed: mapState(["currentUrl"]),
+  computed:   mapState(["currentUrl","currentData","isPlaying"]),
+  watch: {
+    currentUrl: function() {
+      setTimeout(() => {
+          if (player.playing) {
+            player.pause();
+          } else {
+            player.play();
+          }
+      }, 1);
+    },
+
+    
+    isPlaying: function() {
+      setTimeout(() => {
+        this.ifshow = !this.ifshow
+      }, 1);
+    },
+
+
+  },
+
+
 };
 </script>
 <style lang="less" scoped>

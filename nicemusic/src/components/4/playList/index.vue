@@ -46,8 +46,6 @@
       </tbody>
     </table>
 
-    
-    
     <!--  -->
   </div>
 </template>
@@ -176,13 +174,18 @@ export default {
     };
   },
 
- 
   methods: {
     async playSearch(e) {
       try {
         let theID = this.songs[e].id; //获取歌曲ID
-        let res = await this.$api.getSongUrl(theID); //获取歌曲URL
-        this.$store.commit('changeUrl',res.data[0].url) ;//将当前URL传入store
+        console.log('此歌曲ID',theID);
+        let resUrl = await this.$api.getSongUrl(theID); //获取歌曲URL
+        console.log('此歌曲URL',resUrl.data[0].url);
+        this.$store.commit('changeUrl',resUrl.data[0].url) ;//将当前URL传入store
+
+        let resdata = await this.$api.getSongDetail(theID); //获取歌曲data
+        console.log('此歌曲歌手',resdata.songs[0].ar[0].name);
+        this.$store.commit("changeData", resdata.songs[0]); //将当前歌曲data传入store
       } catch (error) {
         console.log(error);
       }
