@@ -6,11 +6,11 @@
       <span>单曲数：{{item.number}}</span>
     </ul> -->
     <el-row :gutter="20">
-        <el-col :key='index' v-for='(item,index) in singerData' :span="4">
+        <el-col :key='index' v-for='(item,index) in singers' :span="4">
         <router-link to="../../../singerDetails">
-          <div class="grid-content bg-purple" ><img :src="item.src" alt=""></div>
+          <div class="grid-content bg-purple" ><img :src="item.picUrl" lazy alt=""></div>
           <p>{{item.name}}</p>
-          <span>单曲数：{{item.number}}</span>
+          <span>单曲数：{{item.musicSize}}</span>
           <p class="empty"></p>
         </router-link>
         <router-view></router-view>
@@ -25,86 +25,27 @@
     name: 'recommendSinger',
     data() {
       return {
-        singerData: [{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/yang.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/fu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/zhou.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/yu.jpg'),
-            name:'双笙',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/yu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'华晨宇',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'华晨宇',
-            number:234
-          },{
-            src:require('../../../assets/images/yu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/yu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/liao.jpg'),
-            name:'河图',
-            number:234
-          },{
-            src:require('../../../assets/images/fu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/fu.jpg'),
-            name:'毛不易',
-            number:234
-          },{
-            src:require('../../../assets/images/fu.jpg'),
-            name:'毛不易',
-            number:234
-          }
-        ]
+        singers:[]   
       }
-    }
+    },
+    methods:{
+      async getHotSinger() { 
+      try {
+        let res = await this.$api.getHotSinger();
+        this.singers = res.artists;
+      } catch (error) {
+        console.log(error);  
+      }
+    },
+    },
+    mounted() {
+    this.getHotSinger();
+  }
   }
 </script>
 
 <style scoped lang="less">
+
 /* ul{
   list-style:none;
   width: 200px;
@@ -159,4 +100,5 @@ img{
     padding: 10px 0;
     background-color: white;
   }
+
 </style>
