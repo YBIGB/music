@@ -5,43 +5,13 @@
        
      
      <div class="container">
-        <div class="wrap">
+        <div class="wrap" v-for="item in personalizeds" :key="item.imageUrl">
             <div class="image">
                 <div class="display front">
-                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
+                    <img :src="item.picUrl" alt="" />
                 </div>
                 <div class="display back">
-                    <h3>云音乐榜</h3>
-                </div>
-            </div>
-        </div>
-        <div class="wrap">
-            <div class="image">
-                <div class="display front">
-                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
-                </div>
-                <div class="display back">
-                    <h3>云音乐榜</h3>
-                </div>
-            </div>
-        </div>
-        <div class="wrap">
-            <div class="image">
-                <div class="display front">
-                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
-                </div>
-                <div class="display back">
-                    <h3>云音乐榜</h3>
-                </div>
-            </div>
-        </div>
-        <div class="wrap">
-            <div class="image">
-                <div class="display front">
-                    <img src="../../../assets/images/pljj3.jpeg" alt="" />
-                </div>
-                <div class="display back">
-                    <h3>云音乐榜</h3>
+                    <h3>{{item.name}}</h3>
                 </div>
             </div>
         </div>
@@ -89,6 +59,8 @@ export default {
     name:'index',
     data() {
       return {
+           personalizeds: [],
+      limit:9,
         tableData: 
         [
          {date: '他只是经过', name: '03：35',address: 'Felix Bennett'},
@@ -99,9 +71,22 @@ export default {
          isCollapse: true
       }
     },
-    methods:{
 
-    }
+  computed: {},
+  methods: {
+    // 获取推荐歌单
+    async getPersonalized() { 
+      try {
+        let res = await this.$api.getPersonalized(this.limit);
+        this.personalizeds = res.result;
+      } catch (error) {
+        console.log(error);  
+      }
+    },
+  },
+  mounted() {
+    this.getPersonalized();
+  }
 }
 </script>
 
@@ -125,7 +110,7 @@ export default {
 }
 
 .parallax-img1 {
-    height: 400px;
+    height: 200px;
     background-image: url('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/7/thumb.jpg');
 }
 
@@ -225,7 +210,7 @@ h1 {
    -perspective: 400;
     /* -moz-perspective: 400; */
     float: left;
-    width: 220px;
+    width: 80px;
     margin-right: 20px;
 }
 
@@ -257,6 +242,7 @@ img {
 .display h3 {
     color: rgb(182, 35, 35);
     text-align: center;
+    font-size: 13px;
 }
 
 .back {
@@ -264,8 +250,8 @@ img {
     -moz-transform: rotateY(180deg);
     /* background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726)); */
     background: linear-gradient(to top, #fdbb5a, #db5726);
-    width: 220px;
-    height: 200px;
-    line-height: 200px;
+    width: 80px;
+    height: 80px;
+    /* line-height: 200px; */
 }
 </style>
