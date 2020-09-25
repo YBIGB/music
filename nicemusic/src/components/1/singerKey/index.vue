@@ -1,19 +1,20 @@
 <template>
 <div>
-    <ul>
-      <li>全部</li>
+    <ol>
+      <!-- <li>全部</li>
       <li>男歌手</li>
       <li>女歌手</li>
-      <li>组合</li>
-  </ul>
-  <ul>
-      <li>全部</li>
-      <li>内地</li>
-      <li>欧美</li>
-      <li>港澳</li>
-      <li>韩国</li>
-      <li>其他</li>
-  </ul>
+      <li>组合</li> -->
+      <li v-on:click='colorChange(index)' :class='currentIndex==index?"active":""' :key='item.id' v-for='(item,index) in listone'>{{item.title}}</li>
+  </ol>
+  <dl>
+      <dd>全部</dd>
+      <dd>内地</dd>
+      <dd>欧美</dd>
+      <dd>港澳</dd>
+      <dd>韩国</dd>
+      <dd>其他</dd>
+  </dl>
   <ul class="circle">
       <li>热门</li>
       <li>A</li>
@@ -52,16 +53,39 @@
     name: 'singerKey',
     data() {
       return {
+          currentIndex:0,
+          listone: [{
+                    id: 1,
+                    title: '全部'
+                }, {
+                    id: 2,
+                    title: '男歌手'
+                }, {
+                    id: 3,
+                    title: '女歌手'
+                },{
+                    id:4,
+                    title:'组合'
+                }]
       }
+    },
+    methods:{
+        colorChange:function(index){
+            this.currentIndex = index;
+        }
     }
   }
 </script>
 
 <style scoped>
+.active{
+    background-color: red;
+    color:white;
+}
 div{
     padding-top:5px;
 }
- ul{
+ ul,ol,dl{
     list-style: none;
     padding-left: 0;
     
@@ -69,10 +93,23 @@ div{
 li{
     margin-left: 0;
 }
-ul li:first-child{
-    background-color: red;
-    color:white;
+ul li:first-child,ol li:first-child{
+    /* background-color: red;
+    color:white; */
     margin-left:40px;
+}
+dd{
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-right: -30px;
+    border-radius: 20px 20px 20px 20px;
+}
+dd:first-child{
+   /* background-color: red;
+    color:white;  */
 }
 li,.circle li:first-child{
     display: inline-block;
