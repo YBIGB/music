@@ -5,7 +5,7 @@
       <div class="for-content" :span="4" :key="index" v-for="(item, index) in personalizeds">
         <div class="single-content">
           <img :src="item.picUrl" lazy />
-          <h6>{{ item.name }}</h6>
+          <h5>{{ item.name }}</h5>
         </div>
       </div>
     </div>
