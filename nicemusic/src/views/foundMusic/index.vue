@@ -6,7 +6,7 @@
         <recommend-music></recommend-music>
         <recommend-singer></recommend-singer>
         <div class="player">
-            <audio :src='musicUrl' controls autoplay></audio>
+            <audio :src='musicUrl' @showDialog='toshowDialog' controls autoplay></audio>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@
         data() {
             return {
                 musicUrl:"http://m7.music.126.net/20200925030144/81b4fb17e5fdb6f4d338269e492cd3e4/ymusic/obj/w5zDlMODwrDDiGjCn8Ky/4059394339/2cd8/87e5/e02f/06084eaee565607d9e41cdd6e1899396.mp3",
+                show: 'false'
             }
         },
         components: {
@@ -30,9 +31,19 @@
             RecommendMusic,
             RecommendSinger
         },
-        methods: {},
+        methods: {
+            toshowDialog(data){
+                this.dialogVisible = data
+            }
+        },
         mounted() {}
     }
 </script>
 
-<style></style>
+<style>
+    .player {
+        position: fixed;
+        bottom: 0%;
+        left: 39%;
+    }
+</style>

@@ -17,13 +17,14 @@
             <div class="song-name ellipsis">{{ item.name }}</div>
             <!-- 歌手名 -->
             <div class="singer ellipsis">{{ item.song.artists[0].name }}</div>
-            <div @click="playMusic(item.id)" class="playicon"><img src="../../../assets/images/cd.png"></div>
+            <div @click="playMusic(item.id)" class="playicon">
+              <img @click="add" src="../../../assets/images/cd.png">
+            </div>
           </div>
         </div>
       </div>
     </div>
 <!--    <audio :src='murl' controls autoplay></audio>-->
-
     <h4>推荐歌手</h4>
   </div>
 </template>
@@ -53,6 +54,9 @@
       })
     },
     methods: {
+      add () {
+        this.$emit('showDialog', false);
+      },
       playMusic(id) {
         // console.log(id)
         axios({
