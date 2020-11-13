@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       personalizeds: [],
-      limit:24
+      limit:24  
     };
   },
   computed: {},
@@ -40,6 +40,9 @@ export default {
 <style lang="less" scoped>
 .all-container {
   margin-left: 1.5vw;
+}
+h5{
+  color: red;
 }
 div h4 {
   text-indent: 4vw;
