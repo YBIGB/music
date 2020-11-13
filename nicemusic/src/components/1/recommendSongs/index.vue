@@ -43,6 +43,7 @@ export default {
 }
 h5{
   color: red;
+  font-size: 20px;
 }
 div h4 {
   text-indent: 4vw;
